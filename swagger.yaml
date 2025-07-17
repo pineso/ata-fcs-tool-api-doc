@@ -1914,12 +1914,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIResponseMdAppCtrl'
-  /api/master/fcs-schemes/update:
+  /api/master/fcs-schemes/update/{schemeSeq}:
     post:
       tags:
       - FCS_SCHEME
       summary: 스키마 수정
       operationId: edit_19
+      parameters:
+      - name: schemeSeq
+        in: path
+        required: true
+        schema:
+          type: string
+          maxLength: 20
+          minLength: 0
       requestBody:
         content:
           application/json:
@@ -1933,17 +1941,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIResponseString'
-  /api/master/fcs-schemes/read:
+  /api/master/fcs-schemes/read/{schemeSeq}:
     post:
       tags:
       - FCS_SCHEME
       summary: 스키마 조회
       operationId: findOne_19
+      parameters:
+      - name: schemeSeq
+        in: path
+        required: true
+        schema:
+          type: string
+          maxLength: 20
+          minLength: 0
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsSchemeIdDto'
+              $ref: '#/components/schemas/APIRequestBase'
         required: true
       responses:
         "200":
@@ -1971,17 +1987,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIResponseListFcsScheme'
-  /api/master/fcs-schemes/delete:
+  /api/master/fcs-schemes/delete/{schemeSeq}:
     post:
       tags:
       - FCS_SCHEME
       summary: 스키마 삭제
       operationId: delete_20
+      parameters:
+      - name: schemeSeq
+        in: path
+        required: true
+        schema:
+          type: string
+          maxLength: 20
+          minLength: 0
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsSchemeIdDto'
+              $ref: '#/components/schemas/APIRequestBase'
         required: true
       responses:
         "200":
@@ -5595,11 +5619,6 @@ components:
         messageNo:
           type: string
           description: messageNo
-        schemeSeq:
-          type: string
-          description: schemeSeq
-          maxLength: 20
-          minLength: 0
         schemeCode:
           type: string
           description: DB에 사용되는 명칭
@@ -5611,29 +5630,6 @@ components:
           maxLength: 100
           minLength: 0
       title: "FcsScheme 등록, 수정 API 요청 DTO"
-    FcsSchemeIdDto:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          description: apiKey
-          maxLength: 10
-          minLength: 1
-        messageId:
-          type: string
-          description: messageId
-        telegramId:
-          type: string
-          description: telegramId
-        messageNo:
-          type: string
-          description: messageNo
-        schemeSeq:
-          type: string
-          description: schemeSeq
-          maxLength: 20
-          minLength: 0
-      title: "FcsScheme 조회, 삭제 API 요청 DTO"
     APIResponseFcsScheme:
       type: object
       properties:
