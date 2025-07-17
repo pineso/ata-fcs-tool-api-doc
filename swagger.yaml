@@ -1914,25 +1914,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIResponseMdAppCtrl'
-  /api/master/fcs-schemes/update/{schemeSeq}:
+  /api/master/fcs-schemes/update:
     post:
       tags:
       - FCS_SCHEME
       summary: 스키마 수정
       operationId: edit_19
-      parameters:
-      - name: schemeSeq
-        in: path
-        required: true
-        schema:
-          type: string
-          maxLength: 20
-          minLength: 0
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsSchemeDto'
+              $ref: '#/components/schemas/updateFcsScheme'
         required: true
       responses:
         "200":
@@ -1941,25 +1933,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIResponseString'
-  /api/master/fcs-schemes/read/{schemeSeq}:
+  /api/master/fcs-schemes/read:
     post:
       tags:
       - FCS_SCHEME
       summary: 스키마 조회
       operationId: findOne_19
-      parameters:
-      - name: schemeSeq
-        in: path
-        required: true
-        schema:
-          type: string
-          maxLength: 20
-          minLength: 0
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/APIRequestBase'
+              $ref: '#/components/schemas/readFcsScheme'
         required: true
       responses:
         "200":
@@ -1987,25 +1971,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIResponseListFcsScheme'
-  /api/master/fcs-schemes/delete/{schemeSeq}:
+  /api/master/fcs-schemes/delete:
     post:
       tags:
       - FCS_SCHEME
       summary: 스키마 삭제
       operationId: delete_20
-      parameters:
-      - name: schemeSeq
-        in: path
-        required: true
-        schema:
-          type: string
-          maxLength: 20
-          minLength: 0
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/APIRequestBase'
+              $ref: '#/components/schemas/deleteFcsScheme'
         required: true
       responses:
         "200":
@@ -2024,7 +2000,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsSchemeDto'
+              $ref: '#/components/schemas/createFcsScheme'
         required: true
       responses:
         "200":
@@ -2223,17 +2199,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIResponseFcsDeviceLink'
-  /api/master/fcs-canvases/update:
+  /api/master/fcs-canvases/update-image:
     post:
       tags:
       - FCS_CANVAS
-      summary: 캔버스 수정
-      operationId: edit_22
+      summary: 캔버스 이미지 수정
+      operationId: editImage
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasDto'
+              $ref: '#/components/schemas/updateImageFcsCanvas'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIResponseString'
+  /api/master/fcs-canvases/update-data:
+    post:
+      tags:
+      - FCS_CANVAS
+      summary: 캔버스 데이터 수정
+      operationId: editData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateDataFcsCanvas'
         required: true
       responses:
         "200":
@@ -2252,7 +2247,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasIdDto'
+              $ref: '#/components/schemas/readFcsCanvas'
         required: true
       responses:
         "200":
@@ -2290,7 +2285,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasIdDto'
+              $ref: '#/components/schemas/deleteFcsCanvas'
         required: true
       responses:
         "200":
@@ -2309,7 +2304,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasDto'
+              $ref: '#/components/schemas/createFcsCanvas'
         required: true
       responses:
         "200":
@@ -2323,7 +2318,7 @@ paths:
       tags:
       - FCS_CANVAS_TOOL
       summary: 캔버스 도구 수정
-      operationId: edit_23
+      operationId: edit_22
       requestBody:
         content:
           application/json:
@@ -2418,7 +2413,7 @@ paths:
       tags:
       - FCS_CANVAS_OPERATION_LINK
       summary: 캔버스 운영 설비 관계 수정
-      operationId: edit_24
+      operationId: edit_23
       requestBody:
         content:
           application/json:
@@ -2513,7 +2508,7 @@ paths:
       tags:
       - FCS_CANVAS_DEVICE_LINK
       summary: 캔버스 설비 연결 관계 수정
-      operationId: edit_25
+      operationId: edit_24
       requestBody:
         content:
           application/json:
@@ -5602,7 +5597,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    FcsSchemeDto:
+    updateFcsScheme:
       type: object
       properties:
         apiKey:
@@ -5619,6 +5614,11 @@ components:
         messageNo:
           type: string
           description: messageNo
+        schemeSeq:
+          type: string
+          description: schemeSeq
+          maxLength: 20
+          minLength: 0
         schemeCode:
           type: string
           description: DB에 사용되는 명칭
@@ -5629,7 +5629,34 @@ components:
           description: 명칭
           maxLength: 100
           minLength: 0
-      title: "FcsScheme 등록, 수정 API 요청 DTO"
+      required:
+      - schemeSeq
+      title: FcsScheme 수정 요청 DTO
+    readFcsScheme:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        schemeSeq:
+          type: string
+          description: schemeSeq
+          maxLength: 20
+          minLength: 0
+      required:
+      - schemeSeq
+      title: FcsScheme 조회 요청 DTO
     APIResponseFcsScheme:
       type: object
       properties:
@@ -5681,6 +5708,59 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
+    deleteFcsScheme:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        schemeSeq:
+          type: string
+          description: schemeSeq
+          maxLength: 20
+          minLength: 0
+      required:
+      - schemeSeq
+      title: FcsScheme 삭제 요청 DTO
+    createFcsScheme:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        schemeCode:
+          type: string
+          description: DB에 사용되는 명칭
+          maxLength: 50
+          minLength: 0
+        schemeName:
+          type: string
+          description: 명칭
+          maxLength: 100
+          minLength: 0
+      title: FcsScheme 등록 요청 DTO
     FcsDeviceToolDto:
       type: object
       properties:
@@ -5896,7 +5976,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    FcsCanvasDto:
+    updateImageFcsCanvas:
       type: object
       properties:
         apiKey:
@@ -5923,11 +6003,10 @@ components:
           description: 배경 이미지
           maxLength: 200
           minLength: 0
-        metaData:
-          type: string
-          description: 메타 데이터(JSON 문자열)
-      title: "MdBiz 등록, 수정 API 요청 DTO"
-    FcsCanvasIdDto:
+      required:
+      - canvasSeq
+      title: FcsCanvas 배경 수정 요청 DTO
+    updateDataFcsCanvas:
       type: object
       properties:
         apiKey:
@@ -5949,7 +6028,37 @@ components:
           description: canvasSeq
           maxLength: 20
           minLength: 0
-      title: "FcsCanvas 조회, 삭제 API 요청 DTO"
+        metaData:
+          type: string
+          description: 메타 데이터(JSON 문자열)
+      required:
+      - canvasSeq
+      title: FcsCanvas 데이터 수정 요청 DTO
+    readFcsCanvas:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        canvasSeq:
+          type: string
+          description: canvasSeq
+          maxLength: 20
+          minLength: 0
+      required:
+      - canvasSeq
+      title: FcsCanvas 조회 요청 DTO
     APIResponseFcsCanvas:
       type: object
       properties:
@@ -6001,6 +6110,57 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
+    deleteFcsCanvas:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        canvasSeq:
+          type: string
+          description: canvasSeq
+          maxLength: 20
+          minLength: 0
+      required:
+      - canvasSeq
+      title: FcsCanvas 삭제 요청 DTO
+    createFcsCanvas:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        backgroundImage:
+          type: string
+          description: 배경 이미지
+          maxLength: 200
+          minLength: 0
+        metaData:
+          type: string
+          description: 메타 데이터(JSON 문자열)
+      title: FcsCanvas 등록 요청 DTO
     FcsCanvasToolDto:
       type: object
       properties:
