@@ -271,7 +271,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegDeviceDto'
+              $ref: '#/components/schemas/updateRegDevice'
         required: true
       responses:
         "200":
@@ -280,25 +280,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIResponseRegDeviceId'
-  /api/master/reg-devices/read:
-    post:
-      tags:
-      - REG_DEVICE
-      summary: 디바이스 타입 조회
-      operationId: findOne_2
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RegDeviceIdDto'
-        required: true
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/APIResponseRegDevice'
   /api/master/reg-devices/read-all:
     post:
       tags:
@@ -328,7 +309,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegDeviceIdDto'
+              $ref: '#/components/schemas/deleteRegDevice'
         required: true
       responses:
         "200":
@@ -347,7 +328,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegDeviceDto'
+              $ref: '#/components/schemas/createRegDevice'
         required: true
       responses:
         "200":
@@ -380,7 +361,7 @@ paths:
       tags:
       - REG_APP
       summary: 시스템 정의 조회
-      operationId: findOne_3
+      operationId: findOne_2
       requestBody:
         content:
           application/json:
@@ -513,7 +494,7 @@ paths:
       tags:
       - MD_OPERATION
       summary: 운영 마스터 조회
-      operationId: findOne_4
+      operationId: findOne_3
       requestBody:
         content:
           application/json:
@@ -608,7 +589,7 @@ paths:
       tags:
       - MD_OPERATION_LINK
       summary: 운영-설비 연결 관계 마스터 조회
-      operationId: findOne_5
+      operationId: findOne_4
       requestBody:
         content:
           application/json:
@@ -703,7 +684,7 @@ paths:
       tags:
       - MD_EXECUTION_DEVICE
       summary: 운영실행설비 조회
-      operationId: findOne_6
+      operationId: findOne_5
       requestBody:
         content:
           application/json:
@@ -798,7 +779,7 @@ paths:
       tags:
       - MD_EQ
       summary: 설비기준 정보 조회
-      operationId: findOne_7
+      operationId: findOne_6
       requestBody:
         content:
           application/json:
@@ -893,7 +874,7 @@ paths:
       tags:
       - MD_DEVICE
       summary: 장비 기준정보 조회
-      operationId: findOne_8
+      operationId: findOne_7
       requestBody:
         content:
           application/json:
@@ -988,7 +969,7 @@ paths:
       tags:
       - MD_DEVICE_STG
       summary: 렉 설비 상세 마스터 조회
-      operationId: findOne_9
+      operationId: findOne_8
       requestBody:
         content:
           application/json:
@@ -1083,7 +1064,7 @@ paths:
       tags:
       - MD_DEVICE_SORT
       summary: 분류존 상세 마스터 조회
-      operationId: findOne_10
+      operationId: findOne_9
       requestBody:
         content:
           application/json:
@@ -1178,7 +1159,7 @@ paths:
       tags:
       - MD_DEVICE_PLACE
       summary: 파킹 플레이스존 상세 마스터 조회
-      operationId: findOne_11
+      operationId: findOne_10
       requestBody:
         content:
           application/json:
@@ -1273,7 +1254,7 @@ paths:
       tags:
       - MD_DEVICE_LINK
       summary: 설비 연결 관계 마스터 조회
-      operationId: findOne_12
+      operationId: findOne_11
       requestBody:
         content:
           application/json:
@@ -1368,7 +1349,7 @@ paths:
       tags:
       - MD_DEVICE_CTRL
       summary: 제어컨트롤로 정보 조회
-      operationId: findOne_13
+      operationId: findOne_12
       requestBody:
         content:
           application/json:
@@ -1463,7 +1444,7 @@ paths:
       tags:
       - MD_DEVICE_CTRL_MELSEC
       summary: Melsec PLC INF 사양 마스터 조회
-      operationId: findOne_14
+      operationId: findOne_13
       requestBody:
         content:
           application/json:
@@ -1558,7 +1539,7 @@ paths:
       tags:
       - MD_DEVICE_ASSIST
       summary: 보조장비 상세 마스터 조회
-      operationId: findOne_15
+      operationId: findOne_14
       requestBody:
         content:
           application/json:
@@ -1653,7 +1634,7 @@ paths:
       tags:
       - MD_BIZ
       summary: 비즈니스 조회
-      operationId: findOne_16
+      operationId: findOne_15
       requestBody:
         content:
           application/json:
@@ -1748,7 +1729,7 @@ paths:
       tags:
       - MD_BIZ_OPERATION
       summary: 비즈니스 운영 시나리오 조회
-      operationId: findOne_17
+      operationId: findOne_16
       requestBody:
         content:
           application/json:
@@ -1843,7 +1824,7 @@ paths:
       tags:
       - MD_APP_CTRL
       summary: 시스템 표준 인터페이스 사양 조회
-      operationId: findOne_18
+      operationId: findOne_17
       requestBody:
         content:
           application/json:
@@ -1938,7 +1919,7 @@ paths:
       tags:
       - FCS_SCHEME
       summary: 스키마 조회
-      operationId: findOne_19
+      operationId: findOne_18
       requestBody:
         content:
           application/json:
@@ -2019,7 +2000,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsDeviceToolDto'
+              $ref: '#/components/schemas/updateFcsDeviceTool'
         required: true
       responses:
         "200":
@@ -2033,12 +2014,12 @@ paths:
       tags:
       - FCS_DEVICE_TOOL
       summary: 도구 기초정보 조회
-      operationId: findOne_20
+      operationId: findOne_19
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsDeviceToolIdDto'
+              $ref: '#/components/schemas/readFcsDeviceTool'
         required: true
       responses:
         "200":
@@ -2076,7 +2057,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsDeviceToolIdDto'
+              $ref: '#/components/schemas/deleteFcsDeviceTool'
         required: true
       responses:
         "200":
@@ -2095,7 +2076,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsDeviceToolDto'
+              $ref: '#/components/schemas/createFcsDeviceTool'
         required: true
       responses:
         "200":
@@ -2114,7 +2095,45 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsDeviceLinkDto'
+              $ref: '#/components/schemas/updateFcsDeviceLink'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIResponseString'
+  /api/master/fcs-device-links/update-tool:
+    post:
+      tags:
+      - FCS_DEVICE_LINK
+      summary: 장비 도구 관계 수정
+      operationId: editTool
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateToolFcsDeviceLink'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIResponseString'
+  /api/master/fcs-device-links/update-device:
+    post:
+      tags:
+      - FCS_DEVICE_LINK
+      summary: 장비 디바이스 타입 수정
+      operationId: editDevice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateDeviceFcsDeviceLink'
         required: true
       responses:
         "200":
@@ -2128,12 +2147,12 @@ paths:
       tags:
       - FCS_DEVICE_LINK
       summary: 장비 도구 관계 조회
-      operationId: findOne_21
+      operationId: findOne_20
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsDeviceLinkIdDto'
+              $ref: '#/components/schemas/readFcsDeviceLink'
         required: true
       responses:
         "200":
@@ -2171,7 +2190,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsDeviceLinkIdDto'
+              $ref: '#/components/schemas/deleteFcsDeviceLink'
         required: true
       responses:
         "200":
@@ -2190,7 +2209,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsDeviceLinkDto'
+              $ref: '#/components/schemas/createFcsDeviceLink'
         required: true
       responses:
         "200":
@@ -2242,7 +2261,7 @@ paths:
       tags:
       - FCS_CANVAS
       summary: 캔버스 조회
-      operationId: findOne_22
+      operationId: findOne_21
       requestBody:
         content:
           application/json:
@@ -2323,7 +2342,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasToolDto'
+              $ref: '#/components/schemas/updateFcsCanvasTool'
         required: true
       responses:
         "200":
@@ -2337,12 +2356,12 @@ paths:
       tags:
       - FCS_CANVAS_TOOL
       summary: 캔버스 도구 조회
-      operationId: findOne_23
+      operationId: findOne_22
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasToolIdDto'
+              $ref: '#/components/schemas/readFcsCanvasTool'
         required: true
       responses:
         "200":
@@ -2380,7 +2399,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasToolIdDto'
+              $ref: '#/components/schemas/deleteFcsCanvasTool'
         required: true
       responses:
         "200":
@@ -2399,7 +2418,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasToolDto'
+              $ref: '#/components/schemas/createFcsCanvasTool'
         required: true
       responses:
         "200":
@@ -2418,7 +2437,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasOperationLinkDto'
+              $ref: '#/components/schemas/updateFcsCanvasOperationLink'
         required: true
       responses:
         "200":
@@ -2432,12 +2451,12 @@ paths:
       tags:
       - FCS_CANVAS_OPERATION_LINK
       summary: 캔버스 운영 설비 관계 조회
-      operationId: findOne_24
+      operationId: findOne_23
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasOperationLinkIdDto'
+              $ref: '#/components/schemas/readFcsCanvasOperationLink'
         required: true
       responses:
         "200":
@@ -2475,7 +2494,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasOperationLinkIdDto'
+              $ref: '#/components/schemas/deleteFcsCanvasOperationLink'
         required: true
       responses:
         "200":
@@ -2494,7 +2513,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasOperationLinkDto'
+              $ref: '#/components/schemas/createFcsCanvasOperationLink'
         required: true
       responses:
         "200":
@@ -2513,7 +2532,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasDeviceLinkDto'
+              $ref: '#/components/schemas/updateFcsCanvasDeviceLink'
         required: true
       responses:
         "200":
@@ -2527,12 +2546,12 @@ paths:
       tags:
       - FCS_CANVAS_DEVICE_LINK
       summary: 캔버스 설비 연결 관계 조회
-      operationId: findOne_25
+      operationId: findOne_24
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasDeviceLinkIdDto'
+              $ref: '#/components/schemas/readFcsCanvasDeviceLink'
         required: true
       responses:
         "200":
@@ -2570,7 +2589,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasDeviceLinkIdDto'
+              $ref: '#/components/schemas/deleteFcsCanvasDeviceLink'
         required: true
       responses:
         "200":
@@ -2589,7 +2608,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FcsCanvasDeviceLinkDto'
+              $ref: '#/components/schemas/createFcsCanvasDeviceLink'
         required: true
       responses:
         "200":
@@ -2917,7 +2936,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    RegDeviceDto:
+    updateRegDevice:
       type: object
       properties:
         apiKey:
@@ -2937,20 +2956,30 @@ components:
         funcType:
           type: string
           description: 운영타입
-          maxLength: 10
-          minLength: 1
+          enum:
+          - STORAGE
+          - ROUTE
+          - PICKING
+          - SORT
+          - ASSIST
         deviceType:
           type: string
           description: 장비타입
-          maxLength: 10
-          minLength: 1
+          enum:
+          - CRANE
+          - CELL
+          - SUTTLECAR
+          - LIFT
+          - AUTOMATEDVIHICLE
+          - CONVEYOR
+          - CHUTE
         deviceTypeName:
           type: string
           description: 장비 타입 명칭
       required:
       - deviceType
       - funcType
-      title: "RegDevice 등록, 수정 API 요청 DTO"
+      title: RegDevice 수정 요청 DTO
     APIResponseRegDeviceId:
       type: object
       properties:
@@ -2979,38 +3008,7 @@ components:
           type: string
           description: 장비타입
       title: RegDevice 복합 Id 모델
-    RegDeviceIdDto:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          description: apiKey
-          maxLength: 10
-          minLength: 1
-        messageId:
-          type: string
-          description: messageId
-        telegramId:
-          type: string
-          description: telegramId
-        messageNo:
-          type: string
-          description: messageNo
-        funcType:
-          type: string
-          description: 운영타입
-          maxLength: 10
-          minLength: 1
-        deviceType:
-          type: string
-          description: 장비타입
-          maxLength: 10
-          minLength: 1
-      required:
-      - deviceType
-      - funcType
-      title: "RegDevice 조회, 삭제 API 요청 DTO"
-    APIResponseRegDevice:
+    APIResponseListRegDevice:
       type: object
       properties:
         status:
@@ -3021,7 +3019,9 @@ components:
           type: string
           title: 메시지
         data:
-          $ref: '#/components/schemas/RegDevice'
+          type: array
+          items:
+            $ref: '#/components/schemas/RegDevice'
           title: 결과 데이터
         timestamp:
           type: string
@@ -3041,7 +3041,92 @@ components:
           type: string
           description: 장비 타입 명칭
       title: RegDevice 모델
-    APIResponseListRegDevice:
+    deleteRegDevice:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        funcType:
+          type: string
+          description: 운영타입
+          enum:
+          - STORAGE
+          - ROUTE
+          - PICKING
+          - SORT
+          - ASSIST
+        deviceType:
+          type: string
+          description: 장비타입
+          enum:
+          - CRANE
+          - CELL
+          - SUTTLECAR
+          - LIFT
+          - AUTOMATEDVIHICLE
+          - CONVEYOR
+          - CHUTE
+      required:
+      - deviceType
+      - funcType
+      title: RegDevice 삭제 요청 DTO
+    createRegDevice:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        funcType:
+          type: string
+          description: 운영타입
+          enum:
+          - STORAGE
+          - ROUTE
+          - PICKING
+          - SORT
+          - ASSIST
+        deviceType:
+          type: string
+          description: 장비타입
+          enum:
+          - CRANE
+          - CELL
+          - SUTTLECAR
+          - LIFT
+          - AUTOMATEDVIHICLE
+          - CONVEYOR
+          - CHUTE
+        deviceTypeName:
+          type: string
+          description: 장비 타입 명칭
+      required:
+      - deviceType
+      - funcType
+      title: RegDevice 등록 요청 DTO
+    APIResponseRegDevice:
       type: object
       properties:
         status:
@@ -3052,9 +3137,7 @@ components:
           type: string
           title: 메시지
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/RegDevice'
+          $ref: '#/components/schemas/RegDevice'
           title: 결과 데이터
         timestamp:
           type: string
@@ -5761,7 +5844,7 @@ components:
           maxLength: 100
           minLength: 0
       title: FcsScheme 등록 요청 DTO
-    FcsDeviceToolDto:
+    updateFcsDeviceTool:
       type: object
       properties:
         apiKey:
@@ -5785,9 +5868,11 @@ components:
           minLength: 0
         metaData:
           type: string
-          description: 툴 메타 데이터(JSON 문자열)
-      title: "FcsDeviceTool 등록, 수정 API 요청 DTO"
-    FcsDeviceToolIdDto:
+          description: 메타 데이터(JSON 문자열)
+      required:
+      - deviceToolSeq
+      title: FcsDeviceTool 데이터 수정 요청 DTO
+    readFcsDeviceTool:
       type: object
       properties:
         apiKey:
@@ -5809,7 +5894,9 @@ components:
           description: deviceToolSeq
           maxLength: 20
           minLength: 0
-      title: "csDeviceTool 조회, 삭제 API 요청 DTO"
+      required:
+      - deviceToolSeq
+      title: FcsDeviceTool 조회 요청 DTO
     APIResponseFcsDeviceTool:
       type: object
       properties:
@@ -5858,7 +5945,53 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    FcsDeviceLinkDto:
+    deleteFcsDeviceTool:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        deviceToolSeq:
+          type: string
+          description: deviceToolSeq
+          maxLength: 20
+          minLength: 0
+      required:
+      - deviceToolSeq
+      title: FcsDeviceTool 삭제 요청 DTO
+    createFcsDeviceTool:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        metaData:
+          type: string
+          description: 툴 메타 데이터(JSON 문자열)
+      title: FcsDeviceTool 등록 요청 DTO
+    updateFcsDeviceLink:
       type: object
       properties:
         apiKey:
@@ -5888,18 +6021,30 @@ components:
         funcType:
           type: string
           description: 운영타입
-          maxLength: 10
-          minLength: 1
+          enum:
+          - STORAGE
+          - ROUTE
+          - PICKING
+          - SORT
+          - ASSIST
         deviceType:
           type: string
           description: 장비타입
-          maxLength: 10
-          minLength: 1
+          enum:
+          - CRANE
+          - CELL
+          - SUTTLECAR
+          - LIFT
+          - AUTOMATEDVIHICLE
+          - CONVEYOR
+          - CHUTE
       required:
+      - deviceLinkSeq
+      - deviceToolSeq
       - deviceType
       - funcType
-      title: "FcsDeviceLink 등록, 수정 API 요청 DTO"
-    FcsDeviceLinkIdDto:
+      title: FcsDeviceLink 데이터 수정 요청 DTO
+    updateToolFcsDeviceLink:
       type: object
       properties:
         apiKey:
@@ -5921,7 +6066,87 @@ components:
           description: deviceLinkSeq
           maxLength: 20
           minLength: 0
-      title: "csDeviceTool 조회, 삭제 API 요청 DTO"
+        deviceToolSeq:
+          type: string
+          description: deviceToolSeq
+          maxLength: 20
+          minLength: 0
+      required:
+      - deviceLinkSeq
+      - deviceToolSeq
+      title: FcsDeviceLink 도구 기초 정보 수정 요청 DTO
+    updateDeviceFcsDeviceLink:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        deviceLinkSeq:
+          type: string
+          description: deviceLinkSeq
+          maxLength: 20
+          minLength: 0
+        funcType:
+          type: string
+          description: 운영타입
+          enum:
+          - STORAGE
+          - ROUTE
+          - PICKING
+          - SORT
+          - ASSIST
+        deviceType:
+          type: string
+          description: 장비타입
+          enum:
+          - CRANE
+          - CELL
+          - SUTTLECAR
+          - LIFT
+          - AUTOMATEDVIHICLE
+          - CONVEYOR
+          - CHUTE
+      required:
+      - deviceLinkSeq
+      - deviceType
+      - funcType
+      title: FcsDeviceLink 디바이스 타입 수정 요청 DTO
+    readFcsDeviceLink:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        deviceLinkSeq:
+          type: string
+          description: deviceLinkSeq
+          maxLength: 20
+          minLength: 0
+      required:
+      - deviceLinkSeq
+      title: FcsDeviceLink 조회 요청 DTO
     APIResponseFcsDeviceLink:
       type: object
       properties:
@@ -5976,6 +6201,78 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
+    deleteFcsDeviceLink:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        deviceLinkSeq:
+          type: string
+          description: deviceLinkSeq
+          maxLength: 20
+          minLength: 0
+      required:
+      - deviceLinkSeq
+      title: FcsDeviceLink 삭제 요청 DTO
+    createFcsDeviceLink:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        deviceToolSeq:
+          type: string
+          description: deviceToolSeq
+          maxLength: 20
+          minLength: 0
+        funcType:
+          type: string
+          description: 운영타입
+          enum:
+          - STORAGE
+          - ROUTE
+          - PICKING
+          - SORT
+          - ASSIST
+        deviceType:
+          type: string
+          description: 장비타입
+          enum:
+          - CRANE
+          - CELL
+          - SUTTLECAR
+          - LIFT
+          - AUTOMATEDVIHICLE
+          - CONVEYOR
+          - CHUTE
+      required:
+      - deviceToolSeq
+      - deviceType
+      - funcType
+      title: FcsDeviceLink 등록 요청 DTO
     updateImageFcsCanvas:
       type: object
       properties:
@@ -6161,24 +6458,7 @@ components:
           type: string
           description: 메타 데이터(JSON 문자열)
       title: FcsCanvas 등록 요청 DTO
-    FcsCanvasToolDto:
-      type: object
-      properties:
-        canvasSeq:
-          type: string
-          description: canvasSeq
-          maxLength: 20
-          minLength: 0
-        deviceToolseq:
-          type: string
-          description: deviceToolSeq
-          maxLength: 20
-          minLength: 0
-        metaData:
-          type: string
-          description: 툴 메타 데이터(JSON 문자열)
-      title: "FcsCanvasTool 등록, 수정 API 요청 DTO"
-    FcsCanvasToolIdDto:
+    updateFcsCanvasTool:
       type: object
       properties:
         apiKey:
@@ -6200,7 +6480,47 @@ components:
           description: canvasToolSeq
           maxLength: 20
           minLength: 0
-      title: "FcsCanvasTool 조회, 삭제 API 요청 DTO"
+        canvasSeq:
+          type: string
+          description: canvasSeq
+          maxLength: 20
+          minLength: 0
+        deviceToolseq:
+          type: string
+          description: deviceToolSeq
+          maxLength: 20
+          minLength: 0
+        metaData:
+          type: string
+          description: 툴 메타 데이터(JSON 문자열)
+      required:
+      - canvasToolSeq
+      title: FcsCanvasTool 수정 요청 DTO
+    readFcsCanvasTool:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        canvasToolSeq:
+          type: string
+          description: canvasToolSeq
+          maxLength: 20
+          minLength: 0
+      required:
+      - canvasToolSeq
+      title: FcsCanvasTool 조회 요청 DTO
     APIResponseFcsCanvasTool:
       type: object
       properties:
@@ -6255,9 +6575,79 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    FcsCanvasOperationLinkDto:
+    deleteFcsCanvasTool:
       type: object
       properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        canvasToolSeq:
+          type: string
+          description: canvasToolSeq
+          maxLength: 20
+          minLength: 0
+      required:
+      - canvasToolSeq
+      title: FcsCanvas 삭제 요청 DTO
+    createFcsCanvasTool:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        canvasSeq:
+          type: string
+          description: canvasSeq
+          maxLength: 20
+          minLength: 0
+        deviceToolseq:
+          type: string
+          description: deviceToolSeq
+          maxLength: 20
+          minLength: 0
+        metaData:
+          type: string
+          description: 툴 메타 데이터(JSON 문자열)
+      title: FcsCanvasTool 등록 요청 DTO
+    updateFcsCanvasOperationLink:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
         canvasOperationLinkSeq:
           type: string
           description: canvasOperationLinkSeq
@@ -6278,16 +6668,34 @@ components:
           description: op_code
           maxLength: 20
           minLength: 0
-      title: "FcsCanvasOperationLink 등록, 수정 API 요청 DTO"
-    FcsCanvasOperationLinkIdDto:
+      required:
+      - canvasOperationLinkSeq
+      title: FcsCanvasOperationLink 수정 요청 DTO
+    readFcsCanvasOperationLink:
       type: object
       properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
         canvasOperationLinkSeq:
           type: string
           description: canvasOperationLinkSeq
           maxLength: 20
           minLength: 0
-      title: "FcsCanvasOperationLink 조회, 삭제 API 요청 DTO"
+      required:
+      - canvasOperationLinkSeq
+      title: FcsCanvasOperationLink 조회 요청 DTO
     APIResponseFcsCanvasOperationLink:
       type: object
       properties:
@@ -6342,7 +6750,65 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    FcsCanvasDeviceLinkDto:
+    deleteFcsCanvasOperationLink:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        canvasOperationLinkSeq:
+          type: string
+          description: canvasOperationLinkSeq
+          maxLength: 20
+          minLength: 0
+      required:
+      - canvasOperationLinkSeq
+      title: FcsCanvasOperationLink 삭제 요청 DTO
+    createFcsCanvasOperationLink:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        canvasSeq:
+          type: string
+          description: canvasSeq
+          maxLength: 20
+          minLength: 0
+        seq:
+          type: string
+          description: 인덱스
+          maxLength: 21
+          minLength: 0
+        opCode:
+          type: string
+          description: op_code
+          maxLength: 20
+          minLength: 0
+      title: FcsCanvasOperationLink 등록 요청 DTO
+    updateFcsCanvasDeviceLink:
       type: object
       properties:
         apiKey:
@@ -6374,8 +6840,10 @@ components:
           description: 인덱스
           maxLength: 21
           minLength: 0
-      title: "FcsCanvasDeviceLink 등록, 수정 API 요청 DTO"
-    FcsCanvasDeviceLinkIdDto:
+      required:
+      - canvasDeviceLinkSeq
+      title: FcsCanvasDeviceLink  수정 요청 DTO
+    readFcsCanvasDeviceLink:
       type: object
       properties:
         apiKey:
@@ -6397,7 +6865,9 @@ components:
           description: canvasDeviceLinkSeq
           maxLength: 20
           minLength: 0
-      title: "FcsCanvasDeviceLink 조회, 삭제 API 요청 DTO"
+      required:
+      - canvasDeviceLinkSeq
+      title: FcsCanvasDeviceLink 조회 요청 DTO
     APIResponseFcsCanvasDeviceLink:
       type: object
       properties:
@@ -6449,6 +6919,59 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
+    deleteFcsCanvasDeviceLink:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        canvasDeviceLinkSeq:
+          type: string
+          description: canvasDeviceLinkSeq
+          maxLength: 20
+          minLength: 0
+      required:
+      - canvasDeviceLinkSeq
+      title: FcsCanvasDeviceLink 삭제 요청 DTO
+    createFcsCanvasDeviceLink:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        canvasSeq:
+          type: string
+          description: canvasSeq
+          maxLength: 20
+          minLength: 0
+        seq:
+          type: string
+          description: 인덱스
+          maxLength: 21
+          minLength: 0
+      title: FcsCanvasTool 등록 요청 DTO
   securitySchemes:
     JWT:
       type: http
