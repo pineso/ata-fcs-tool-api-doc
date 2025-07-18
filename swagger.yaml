@@ -81,7 +81,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegUnitDto'
+              $ref: '#/components/schemas/updateRegUnit'
         required: true
       responses:
         "200":
@@ -90,25 +90,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIResponseRegUnitId'
-  /api/master/reg-units/read:
-    post:
-      tags:
-      - REG_UNIT
-      summary: 운영 대상 재고 단위 조회
-      operationId: findOne
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RegUnitIdDto'
-        required: true
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/APIResponseRegUnit'
   /api/master/reg-units/read-all:
     post:
       tags:
@@ -138,7 +119,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegUnitIdDto'
+              $ref: '#/components/schemas/deleteRegUnit'
         required: true
       responses:
         "200":
@@ -157,7 +138,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegUnitDto'
+              $ref: '#/components/schemas/createRegUnit'
         required: true
       responses:
         "200":
@@ -176,7 +157,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegPermissionsDto'
+              $ref: '#/components/schemas/updateRegPermissions'
         required: true
       responses:
         "200":
@@ -190,12 +171,12 @@ paths:
       tags:
       - REG_PERMISSIONS
       summary: "[REGISTER]앱 라이선스(권한) 조회"
-      operationId: findOne_1
+      operationId: findOne
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegPermissionsIdDto'
+              $ref: '#/components/schemas/readRegPermissions'
         required: true
       responses:
         "200":
@@ -233,7 +214,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegPermissionsIdDto'
+              $ref: '#/components/schemas/deleteRegPermissions'
         required: true
       responses:
         "200":
@@ -252,7 +233,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegPermissionsDto'
+              $ref: '#/components/schemas/createRegPermissions'
         required: true
       responses:
         "200":
@@ -347,7 +328,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegAppDto'
+              $ref: '#/components/schemas/updatteRegApp'
         required: true
       responses:
         "200":
@@ -361,12 +342,12 @@ paths:
       tags:
       - REG_APP
       summary: 시스템 정의 조회
-      operationId: findOne_2
+      operationId: findOne_1
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegAppIdDto'
+              $ref: '#/components/schemas/readRegApp'
         required: true
       responses:
         "200":
@@ -404,7 +385,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegAppIdDto'
+              $ref: '#/components/schemas/deleteRegApp'
         required: true
       responses:
         "200":
@@ -423,7 +404,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegAppDto'
+              $ref: '#/components/schemas/createRegApp'
         required: true
       responses:
         "200":
@@ -442,7 +423,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegAppFuncDto'
+              $ref: '#/components/schemas/deleteRegAppFunc'
         required: true
       responses:
         "200":
@@ -461,7 +442,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegAppFuncDto'
+              $ref: '#/components/schemas/createRegAppFunc'
         required: true
       responses:
         "200":
@@ -480,7 +461,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdOperationDto'
+              $ref: '#/components/schemas/MdOperationBody'
         required: true
       responses:
         "200":
@@ -494,12 +475,12 @@ paths:
       tags:
       - MD_OPERATION
       summary: 운영 마스터 조회
-      operationId: findOne_3
+      operationId: findOne_2
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdOperationIdDto'
+              $ref: '#/components/schemas/MdOperationId'
         required: true
       responses:
         "200":
@@ -537,7 +518,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdOperationIdDto'
+              $ref: '#/components/schemas/MdOperationId'
         required: true
       responses:
         "200":
@@ -556,7 +537,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdOperationDto'
+              $ref: '#/components/schemas/MdOperationBody'
         required: true
       responses:
         "200":
@@ -565,36 +546,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIResponseMdOperation'
-  /api/master/md-operation-links/update:
-    post:
-      tags:
-      - MD_OPERATION_LINK
-      summary: 운영-설비 연결 관계 마스터 수정
-      operationId: edit_5
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MdOperationLinkDto'
-        required: true
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/APIResponseMdOperationLinkId'
   /api/master/md-operation-links/read:
     post:
       tags:
       - MD_OPERATION_LINK
       summary: 운영-설비 연결 관계 마스터 조회
-      operationId: findOne_4
+      operationId: findOne_3
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdOperationLinkIdDto'
+              $ref: '#/components/schemas/MdOperationLinkId'
         required: true
       responses:
         "200":
@@ -632,7 +594,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdOperationLinkIdDto'
+              $ref: '#/components/schemas/MdOperationLinkId'
         required: true
       responses:
         "200":
@@ -651,7 +613,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdOperationLinkDto'
+              $ref: '#/components/schemas/MdOperationLinkId'
         required: true
       responses:
         "200":
@@ -660,36 +622,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIResponseMdOperationLink'
-  /api/master/md-execution-devices/update:
-    post:
-      tags:
-      - MD_EXECUTION_DEVICE
-      summary: 운영실행설비 수정
-      operationId: edit_6
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MdExecutionDeviceDto'
-        required: true
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/APIResponseMdExecutionDeviceId'
   /api/master/md-execution-devices/read:
     post:
       tags:
       - MD_EXECUTION_DEVICE
       summary: 운영실행설비 조회
-      operationId: findOne_5
+      operationId: findOne_4
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdExecutionDeviceIdDto'
+              $ref: '#/components/schemas/MdExecutionDeviceId'
         required: true
       responses:
         "200":
@@ -727,7 +670,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdExecutionDeviceIdDto'
+              $ref: '#/components/schemas/MdExecutionDeviceId'
         required: true
       responses:
         "200":
@@ -746,7 +689,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdExecutionDeviceDto'
+              $ref: '#/components/schemas/MdExecutionDeviceId'
         required: true
       responses:
         "200":
@@ -760,12 +703,12 @@ paths:
       tags:
       - MD_EQ
       summary: 설비기준 정보 수정
-      operationId: edit_7
+      operationId: edit_5
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdEqDto'
+              $ref: '#/components/schemas/updateMdEq'
         required: true
       responses:
         "200":
@@ -779,12 +722,12 @@ paths:
       tags:
       - MD_EQ
       summary: 설비기준 정보 조회
-      operationId: findOne_6
+      operationId: findOne_5
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdEqIdDto'
+              $ref: '#/components/schemas/readMdEq'
         required: true
       responses:
         "200":
@@ -822,7 +765,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdEqIdDto'
+              $ref: '#/components/schemas/deleteMdEq'
         required: true
       responses:
         "200":
@@ -841,7 +784,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdEqDto'
+              $ref: '#/components/schemas/createMdEq'
         required: true
       responses:
         "200":
@@ -855,12 +798,12 @@ paths:
       tags:
       - MD_DEVICE
       summary: 장비 기준정보 수정
-      operationId: edit_8
+      operationId: edit_6
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceDto'
+              $ref: '#/components/schemas/MdDeviceBody'
         required: true
       responses:
         "200":
@@ -874,12 +817,12 @@ paths:
       tags:
       - MD_DEVICE
       summary: 장비 기준정보 조회
-      operationId: findOne_7
+      operationId: findOne_6
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceIdDto'
+              $ref: '#/components/schemas/MdDeviceId'
         required: true
       responses:
         "200":
@@ -917,7 +860,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceIdDto'
+              $ref: '#/components/schemas/MdDeviceId'
         required: true
       responses:
         "200":
@@ -936,7 +879,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceDto'
+              $ref: '#/components/schemas/MdDeviceBody'
         required: true
       responses:
         "200":
@@ -950,12 +893,12 @@ paths:
       tags:
       - MD_DEVICE_STG
       summary: 렉 설비 상세 마스터 수정
-      operationId: edit_9
+      operationId: edit_7
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceStgDto'
+              $ref: '#/components/schemas/MdDeviceStgBody'
         required: true
       responses:
         "200":
@@ -969,12 +912,12 @@ paths:
       tags:
       - MD_DEVICE_STG
       summary: 렉 설비 상세 마스터 조회
-      operationId: findOne_8
+      operationId: findOne_7
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceIdDto'
+              $ref: '#/components/schemas/MdDeviceStgId'
         required: true
       responses:
         "200":
@@ -1012,7 +955,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceIdDto'
+              $ref: '#/components/schemas/MdDeviceStgId'
         required: true
       responses:
         "200":
@@ -1031,7 +974,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceStgDto'
+              $ref: '#/components/schemas/MdDeviceStgBody'
         required: true
       responses:
         "200":
@@ -1045,12 +988,12 @@ paths:
       tags:
       - MD_DEVICE_SORT
       summary: 분류존 상세 마스터 수정
-      operationId: edit_10
+      operationId: edit_8
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceSortDto'
+              $ref: '#/components/schemas/MdDeviceSortBody'
         required: true
       responses:
         "200":
@@ -1064,12 +1007,12 @@ paths:
       tags:
       - MD_DEVICE_SORT
       summary: 분류존 상세 마스터 조회
-      operationId: findOne_9
+      operationId: findOne_8
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceIdDto'
+              $ref: '#/components/schemas/MdDeviceSortId'
         required: true
       responses:
         "200":
@@ -1107,7 +1050,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceIdDto'
+              $ref: '#/components/schemas/MdDeviceSortId'
         required: true
       responses:
         "200":
@@ -1126,7 +1069,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceSortDto'
+              $ref: '#/components/schemas/MdDeviceSortBody'
         required: true
       responses:
         "200":
@@ -1140,12 +1083,12 @@ paths:
       tags:
       - MD_DEVICE_PLACE
       summary: 파킹 플레이스존 상세 마스터 수정
-      operationId: edit_11
+      operationId: edit_9
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDevicePlaceDto'
+              $ref: '#/components/schemas/MdDevicePlaceBody'
         required: true
       responses:
         "200":
@@ -1159,12 +1102,12 @@ paths:
       tags:
       - MD_DEVICE_PLACE
       summary: 파킹 플레이스존 상세 마스터 조회
-      operationId: findOne_10
+      operationId: findOne_9
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceIdDto'
+              $ref: '#/components/schemas/MdDevicePlaceId'
         required: true
       responses:
         "200":
@@ -1202,7 +1145,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceIdDto'
+              $ref: '#/components/schemas/MdDevicePlaceId'
         required: true
       responses:
         "200":
@@ -1221,7 +1164,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDevicePlaceDto'
+              $ref: '#/components/schemas/MdDevicePlaceBody'
         required: true
       responses:
         "200":
@@ -1235,12 +1178,12 @@ paths:
       tags:
       - MD_DEVICE_LINK
       summary: 설비 연결 관계 마스터 수정
-      operationId: edit_12
+      operationId: edit_10
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceLinkDto'
+              $ref: '#/components/schemas/EditMdDeviceLink'
         required: true
       responses:
         "200":
@@ -1254,12 +1197,12 @@ paths:
       tags:
       - MD_DEVICE_LINK
       summary: 설비 연결 관계 마스터 조회
-      operationId: findOne_11
+      operationId: findOne_10
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceLinkIdDto'
+              $ref: '#/components/schemas/MdDeviceLinkId'
         required: true
       responses:
         "200":
@@ -1297,7 +1240,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceLinkIdDto'
+              $ref: '#/components/schemas/MdDeviceLinkId'
         required: true
       responses:
         "200":
@@ -1316,7 +1259,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceLinkDto'
+              $ref: '#/components/schemas/CreateMdDeviceLink'
         required: true
       responses:
         "200":
@@ -1330,12 +1273,12 @@ paths:
       tags:
       - MD_DEVICE_CTRL
       summary: 제어컨트롤로 정보 수정
-      operationId: edit_13
+      operationId: edit_11
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceCtrlDto'
+              $ref: '#/components/schemas/MdDeviceCtrlBody'
         required: true
       responses:
         "200":
@@ -1349,12 +1292,12 @@ paths:
       tags:
       - MD_DEVICE_CTRL
       summary: 제어컨트롤로 정보 조회
-      operationId: findOne_12
+      operationId: findOne_11
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceCtrlIdDto'
+              $ref: '#/components/schemas/MdDeviceCtrlId'
         required: true
       responses:
         "200":
@@ -1392,7 +1335,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceCtrlIdDto'
+              $ref: '#/components/schemas/MdDeviceCtrlId'
         required: true
       responses:
         "200":
@@ -1411,7 +1354,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceCtrlDto'
+              $ref: '#/components/schemas/MdDeviceCtrlBody'
         required: true
       responses:
         "200":
@@ -1425,12 +1368,12 @@ paths:
       tags:
       - MD_DEVICE_CTRL_MELSEC
       summary: Melsec PLC INF 사양 마스터 수정
-      operationId: edit_14
+      operationId: edit_12
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceCtrlMelsecDto'
+              $ref: '#/components/schemas/MdDeviceCtrlMelsecBody'
         required: true
       responses:
         "200":
@@ -1444,12 +1387,12 @@ paths:
       tags:
       - MD_DEVICE_CTRL_MELSEC
       summary: Melsec PLC INF 사양 마스터 조회
-      operationId: findOne_13
+      operationId: findOne_12
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceCtrlMelsecIdDto'
+              $ref: '#/components/schemas/MdDeviceCtrlMelsecId'
         required: true
       responses:
         "200":
@@ -1487,7 +1430,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceCtrlMelsecIdDto'
+              $ref: '#/components/schemas/MdDeviceCtrlMelsecId'
         required: true
       responses:
         "200":
@@ -1506,7 +1449,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceCtrlMelsecDto'
+              $ref: '#/components/schemas/MdDeviceCtrlMelsecBody'
         required: true
       responses:
         "200":
@@ -1520,12 +1463,12 @@ paths:
       tags:
       - MD_DEVICE_ASSIST
       summary: 보조장비 상세 마스터 수정
-      operationId: edit_15
+      operationId: edit_13
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceAssistDto'
+              $ref: '#/components/schemas/MdDeviceAssistBody'
         required: true
       responses:
         "200":
@@ -1539,12 +1482,12 @@ paths:
       tags:
       - MD_DEVICE_ASSIST
       summary: 보조장비 상세 마스터 조회
-      operationId: findOne_14
+      operationId: findOne_13
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceIdDto'
+              $ref: '#/components/schemas/MdDeviceAssistId'
         required: true
       responses:
         "200":
@@ -1582,7 +1525,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceIdDto'
+              $ref: '#/components/schemas/MdDeviceAssistId'
         required: true
       responses:
         "200":
@@ -1601,7 +1544,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceAssistDto'
+              $ref: '#/components/schemas/MdDeviceAssistBody'
         required: true
       responses:
         "200":
@@ -1615,12 +1558,12 @@ paths:
       tags:
       - MD_BIZ
       summary: 비즈니스 수정
-      operationId: edit_16
+      operationId: edit_14
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdBizDto'
+              $ref: '#/components/schemas/MdBizBody'
         required: true
       responses:
         "200":
@@ -1634,12 +1577,12 @@ paths:
       tags:
       - MD_BIZ
       summary: 비즈니스 조회
-      operationId: findOne_15
+      operationId: findOne_14
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdBizIdDto'
+              $ref: '#/components/schemas/MdBizId'
         required: true
       responses:
         "200":
@@ -1677,7 +1620,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdBizIdDto'
+              $ref: '#/components/schemas/MdBizId'
         required: true
       responses:
         "200":
@@ -1696,7 +1639,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdBizDto'
+              $ref: '#/components/schemas/MdBizBody'
         required: true
       responses:
         "200":
@@ -1710,12 +1653,12 @@ paths:
       tags:
       - MD_BIZ_OPERATION
       summary: 비즈니스 운영 시나리오 수정
-      operationId: edit_17
+      operationId: edit_15
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdBizOperationDto'
+              $ref: '#/components/schemas/MdBizOperationBody'
         required: true
       responses:
         "200":
@@ -1729,12 +1672,12 @@ paths:
       tags:
       - MD_BIZ_OPERATION
       summary: 비즈니스 운영 시나리오 조회
-      operationId: findOne_16
+      operationId: findOne_15
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdBizOperationIdDto'
+              $ref: '#/components/schemas/MdBizOperationId'
         required: true
       responses:
         "200":
@@ -1772,7 +1715,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdBizOperationIdDto'
+              $ref: '#/components/schemas/MdBizOperationId'
         required: true
       responses:
         "200":
@@ -1791,7 +1734,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdBizOperationDto'
+              $ref: '#/components/schemas/MdBizOperationBody'
         required: true
       responses:
         "200":
@@ -1805,12 +1748,12 @@ paths:
       tags:
       - MD_APP_CTRL
       summary: 시스템 표준 인터페이스 사양 수정
-      operationId: edit_18
+      operationId: edit_16
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdAppCtrlDto'
+              $ref: '#/components/schemas/updateMdAppCtrl'
         required: true
       responses:
         "200":
@@ -1824,12 +1767,12 @@ paths:
       tags:
       - MD_APP_CTRL
       summary: 시스템 표준 인터페이스 사양 조회
-      operationId: findOne_17
+      operationId: findOne_16
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdAppCtrlIdDto'
+              $ref: '#/components/schemas/readMdAppCtrl'
         required: true
       responses:
         "200":
@@ -1867,7 +1810,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdAppCtrlIdDto'
+              $ref: '#/components/schemas/deleteMdAppCtrl'
         required: true
       responses:
         "200":
@@ -1886,7 +1829,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdAppCtrlDto'
+              $ref: '#/components/schemas/createMdAppCtrl'
         required: true
       responses:
         "200":
@@ -1900,7 +1843,7 @@ paths:
       tags:
       - FCS_SCHEME
       summary: 스키마 수정
-      operationId: edit_19
+      operationId: edit_17
       requestBody:
         content:
           application/json:
@@ -1919,7 +1862,7 @@ paths:
       tags:
       - FCS_SCHEME
       summary: 스키마 조회
-      operationId: findOne_18
+      operationId: findOne_17
       requestBody:
         content:
           application/json:
@@ -1995,7 +1938,7 @@ paths:
       tags:
       - FCS_DEVICE_TOOL
       summary: 도구 기초정보 수정
-      operationId: edit_20
+      operationId: edit_18
       requestBody:
         content:
           application/json:
@@ -2014,7 +1957,7 @@ paths:
       tags:
       - FCS_DEVICE_TOOL
       summary: 도구 기초정보 조회
-      operationId: findOne_19
+      operationId: findOne_18
       requestBody:
         content:
           application/json:
@@ -2090,7 +2033,7 @@ paths:
       tags:
       - FCS_DEVICE_LINK
       summary: 장비 도구 관계 수정
-      operationId: edit_21
+      operationId: edit_19
       requestBody:
         content:
           application/json:
@@ -2147,7 +2090,7 @@ paths:
       tags:
       - FCS_DEVICE_LINK
       summary: 장비 도구 관계 조회
-      operationId: findOne_20
+      operationId: findOne_19
       requestBody:
         content:
           application/json:
@@ -2261,7 +2204,7 @@ paths:
       tags:
       - FCS_CANVAS
       summary: 캔버스 조회
-      operationId: findOne_21
+      operationId: findOne_20
       requestBody:
         content:
           application/json:
@@ -2337,7 +2280,7 @@ paths:
       tags:
       - FCS_CANVAS_TOOL
       summary: 캔버스 도구 수정
-      operationId: edit_22
+      operationId: edit_20
       requestBody:
         content:
           application/json:
@@ -2356,7 +2299,7 @@ paths:
       tags:
       - FCS_CANVAS_TOOL
       summary: 캔버스 도구 조회
-      operationId: findOne_22
+      operationId: findOne_21
       requestBody:
         content:
           application/json:
@@ -2432,7 +2375,7 @@ paths:
       tags:
       - FCS_CANVAS_OPERATION_LINK
       summary: 캔버스 운영 설비 관계 수정
-      operationId: edit_23
+      operationId: edit_21
       requestBody:
         content:
           application/json:
@@ -2451,7 +2394,7 @@ paths:
       tags:
       - FCS_CANVAS_OPERATION_LINK
       summary: 캔버스 운영 설비 관계 조회
-      operationId: findOne_23
+      operationId: findOne_22
       requestBody:
         content:
           application/json:
@@ -2527,7 +2470,7 @@ paths:
       tags:
       - FCS_CANVAS_DEVICE_LINK
       summary: 캔버스 설비 연결 관계 수정
-      operationId: edit_24
+      operationId: edit_22
       requestBody:
         content:
           application/json:
@@ -2546,7 +2489,7 @@ paths:
       tags:
       - FCS_CANVAS_DEVICE_LINK
       summary: 캔버스 설비 연결 관계 조회
-      operationId: findOne_24
+      operationId: findOne_23
       requestBody:
         content:
           application/json:
@@ -2619,7 +2562,7 @@ paths:
                 $ref: '#/components/schemas/APIResponseFcsCanvasDeviceLink'
 components:
   schemas:
-    RegUnitDto:
+    updateRegUnit:
       type: object
       properties:
         apiKey:
@@ -2637,19 +2580,19 @@ components:
           type: string
           description: messageNo
         unitLevel:
-          type: integer
-          format: int32
-          description: "재고레벨 (원제고 1:팔레트, 원제고2:박스, 그외 1)"
+          type: string
+          description: "재고레벨 (원재고 1:팔레트, 원재고2:박스, 그외 1)"
+          enum:
+          - Pallet
+          - Box
+          - Etc
         unitType:
           type: string
           description: "재고타입 (A:원재고, B:출고박스, C:공팔레트)"
           enum:
-          - A
-          - B
-          - C
-          example: A
-          minLength: 1
-          pattern: "^[ABC]$"
+          - RawMaterials
+          - OutboundBox
+          - EmptyPallet
         unitName:
           type: string
           description: 유닛 단위 명칭
@@ -2658,7 +2601,7 @@ components:
       required:
       - unitLevel
       - unitType
-      title: "RegUnit 등록, 수정 API 요청 DTO"
+      title: RegUnit 수정 요청 DTO
     APIResponseRegUnitId:
       type: object
       properties:
@@ -2688,73 +2631,6 @@ components:
           type: string
           description: "재고타입 (A:원재고, B:출고박스, C:공팔레트)"
       title: RegUnit 복합 Id 모델
-    RegUnitIdDto:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          description: apiKey
-          maxLength: 10
-          minLength: 1
-        messageId:
-          type: string
-          description: messageId
-        telegramId:
-          type: string
-          description: telegramId
-        messageNo:
-          type: string
-          description: messageNo
-        unitLevel:
-          type: integer
-          format: int32
-          description: "재고레벨 (원제고 1:팔레트, 원제고2:박스, 그외 1)"
-        unitType:
-          type: string
-          description: "재고타입 (A:원재고, B:출고박스, C:공팔레트)"
-          enum:
-          - A
-          - B
-          - C
-          example: A
-          minLength: 1
-          pattern: "^[ABC]$"
-      required:
-      - unitLevel
-      - unitType
-      title: "RegUnit 조회, 삭제 API 요청 DTO"
-    APIResponseRegUnit:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-          title: 결과 상태
-        message:
-          type: string
-          title: 메시지
-        data:
-          $ref: '#/components/schemas/RegUnit'
-          title: 결과 데이터
-        timestamp:
-          type: string
-          format: date-time
-          title: 요청 응답 타임스탬프
-      title: API 공통응답
-    RegUnit:
-      type: object
-      properties:
-        unitLevel:
-          type: integer
-          format: int32
-          description: "재고레벨 (원제고 1:팔레트, 원제고2:박스, 그외 1)"
-        unitType:
-          type: string
-          description: "재고타입 (A:원재고, B:출고박스, C:공팔레트)"
-        unitName:
-          type: string
-          description: 유닛 단위 명칭
-      title: RegUnit 모델
     APIRequestBase:
       type: object
       properties:
@@ -2793,7 +2669,114 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    RegPermissionsDto:
+    RegUnit:
+      type: object
+      properties:
+        unitLevel:
+          type: integer
+          format: int32
+          description: "재고레벨 (원제고 1:팔레트, 원제고2:박스, 그외 1)"
+        unitType:
+          type: string
+          description: "재고타입 (A:원재고, B:출고박스, C:공팔레트)"
+        unitName:
+          type: string
+          description: 유닛 단위 명칭
+      title: RegUnit 모델
+    deleteRegUnit:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        unitLevel:
+          type: string
+          description: "재고레벨 (원재고 1:팔레트, 원재고2:박스, 그외 1)"
+          enum:
+          - Pallet
+          - Box
+          - Etc
+        unitType:
+          type: string
+          description: "재고타입 (A:원재고, B:출고박스, C:공팔레트)"
+          enum:
+          - RawMaterials
+          - OutboundBox
+          - EmptyPallet
+      required:
+      - unitLevel
+      - unitType
+      title: RegUnit 삭제 요청 DTO
+    createRegUnit:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        unitLevel:
+          type: string
+          description: "재고레벨 (원재고 1:팔레트, 원재고2:박스, 그외 1)"
+          enum:
+          - Pallet
+          - Box
+          - Etc
+        unitType:
+          type: string
+          description: "재고타입 (A:원재고, B:출고박스, C:공팔레트)"
+          enum:
+          - RawMaterials
+          - OutboundBox
+          - EmptyPallet
+        unitName:
+          type: string
+          description: 유닛 단위 명칭
+          maxLength: 200
+          minLength: 0
+      required:
+      - unitLevel
+      - unitType
+      title: RegUnit 등록 요청 DTO
+    APIResponseRegUnit:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+          title: 결과 상태
+        message:
+          type: string
+          title: 메시지
+        data:
+          $ref: '#/components/schemas/RegUnit'
+          title: 결과 데이터
+        timestamp:
+          type: string
+          format: date-time
+          title: 요청 응답 타임스탬프
+      title: API 공통응답
+    updateRegPermissions:
       type: object
       properties:
         apiKey:
@@ -2814,7 +2797,7 @@ components:
           type: string
           description: 고객사 코드
           maxLength: 20
-          minLength: 1
+          minLength: 0
         orgName:
           type: string
           description: 고객사 명
@@ -2830,7 +2813,7 @@ components:
           minLength: 0
       required:
       - orgCode
-      title: "RegPermissions 등록, 수정 API 요청 DTO"
+      title: RegPermissions 수정 요청 DTO
     APIResponseString:
       type: object
       properties:
@@ -2849,7 +2832,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    RegPermissionsIdDto:
+    readRegPermissions:
       type: object
       properties:
         apiKey:
@@ -2870,10 +2853,10 @@ components:
           type: string
           description: 고객사 코드
           maxLength: 20
-          minLength: 1
+          minLength: 0
       required:
       - orgCode
-      title: "RegPermissions 조회, 삭제 API 요청 DTO"
+      title: RegPermissions 조회 요청 DTO
     APIResponseRegPermissions:
       type: object
       properties:
@@ -2936,6 +2919,69 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
+    deleteRegPermissions:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        orgCode:
+          type: string
+          description: 고객사 코드
+          maxLength: 20
+          minLength: 0
+      required:
+      - orgCode
+      title: RegPermissions 삭제 요청 DTO
+    createRegPermissions:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        orgCode:
+          type: string
+          description: 고객사 코드
+          maxLength: 20
+          minLength: 0
+        orgName:
+          type: string
+          description: 고객사 명
+          maxLength: 200
+          minLength: 0
+        activeKey:
+          type: string
+          description: 활성화 키
+        licenseType:
+          type: string
+          description: 라이센스 타입
+          maxLength: 10
+          minLength: 0
+      required:
+      - orgCode
+      title: RegPermissions 등록 요청 DTO
     updateRegDevice:
       type: object
       properties:
@@ -3144,7 +3190,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    RegAppDto:
+    updatteRegApp:
       type: object
       properties:
         apiKey:
@@ -3165,12 +3211,12 @@ components:
           type: string
           description: 시스템 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         appType:
           type: string
           description: 시스템 타입
           maxLength: 10
-          minLength: 1
+          minLength: 0
         appName:
           type: string
           description: 시스템 명칭
@@ -3179,8 +3225,8 @@ components:
       required:
       - appCode
       - appType
-      title: "RegApp 등록, 수정 API 요청 DTO"
-    RegAppIdDto:
+      title: RegApp 수정 요청 DTO
+    readRegApp:
       type: object
       properties:
         apiKey:
@@ -3201,10 +3247,10 @@ components:
           type: string
           description: 시스템 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
       required:
       - appCode
-      title: "RegApp 조회, 삭제 API 요청 DTO"
+      title: RegApp 조회 요청 DTO
     APIResponseRegApp:
       type: object
       properties:
@@ -3256,7 +3302,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    RegAppFuncDto:
+    deleteRegApp:
       type: object
       properties:
         apiKey:
@@ -3277,20 +3323,71 @@ components:
           type: string
           description: 시스템 코드
           maxLength: 10
-          minLength: 1
-        funcCode:
-          type: string
-          description: 동적 Jar - Interface Function Name
-          maxLength: 50
           minLength: 0
-        funcDesc:
+      required:
+      - appCode
+      title: RegApp 삭제 요청 DTO
+    createRegApp:
+      type: object
+      properties:
+        apiKey:
           type: string
-          description: 설명
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        appCode:
+          type: string
+          description: 시스템 코드
+          maxLength: 10
+          minLength: 0
+        appType:
+          type: string
+          description: 시스템 타입
+          maxLength: 10
+          minLength: 0
+        appName:
+          type: string
+          description: 시스템 명칭
           maxLength: 200
           minLength: 0
       required:
       - appCode
-      title: "RegAppFunc 등록, 삭제 API 요청 DTO"
+      - appType
+      title: RegApp 등록 요청 DTO
+    deleteRegAppFunc:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        appCode:
+          type: string
+          description: 시스템 코드
+          maxLength: 10
+          minLength: 0
+      required:
+      - appCode
+      title: RegAppFunc 삭제 요청 DTO
     APIResponseRegAppFunc:
       type: object
       properties:
@@ -3322,7 +3419,42 @@ components:
           type: string
           description: 설명
       title: RegAppFunc 모델
-    MdOperationDto:
+    createRegAppFunc:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        appCode:
+          type: string
+          description: 시스템 코드
+          maxLength: 10
+          minLength: 0
+        funcCode:
+          type: string
+          description: 동적 Jar - Interface Function Name
+          maxLength: 50
+          minLength: 0
+        funcDesc:
+          type: string
+          description: 설명
+          maxLength: 200
+          minLength: 0
+      required:
+      - appCode
+      title: RegAppFunc 등록 요청 DTO
+    MdOperationBody:
       type: object
       properties:
         apiKey:
@@ -3343,7 +3475,7 @@ components:
           type: string
           description: 운영 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         opName:
           type: string
           description: 운영명
@@ -3358,10 +3490,8 @@ components:
           type: string
           description: 선점 여부 ?
           enum:
-          - "Y"
-          - "N"
-          example: "N"
-          pattern: "^[YN]$"
+          - USE
+          - DISABLED
         reserveEqCode:
           type: string
           description: 선점 설비 ?
@@ -3373,8 +3503,8 @@ components:
           description: 우선순위
       required:
       - opCode
-      title: "MdOperation 등록, 수정 API 요청 DTO"
-    MdOperationIdDto:
+      title: MdOperationBody DTO
+    MdOperationId:
       type: object
       properties:
         apiKey:
@@ -3395,10 +3525,10 @@ components:
           type: string
           description: 운영 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
       required:
       - opCode
-      title: "MdOperation 조회, 삭제 API 요청 DTO"
+      title: MdOperationId DTO
     APIResponseMdOperation:
       type: object
       properties:
@@ -3463,68 +3593,9 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdOperationLinkDto:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          description: apiKey
-          maxLength: 10
-          minLength: 1
-        messageId:
-          type: string
-          description: messageId
-        telegramId:
-          type: string
-          description: telegramId
-        messageNo:
-          type: string
-          description: messageNo
-        opCode:
-          type: string
-          description: 운영 코드
-          maxLength: 10
-          minLength: 0
-        seq:
-          type: string
-          description: 인덱스
-          maxLength: 21
-          minLength: 0
-      required:
-      - opCode
-      - seq
-      title: "MdOperationLink 등록, 수정 API 요청 DTO"
-    APIResponseMdOperationLinkId:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-          title: 결과 상태
-        message:
-          type: string
-          title: 메시지
-        data:
-          $ref: '#/components/schemas/MdOperationLinkId'
-          title: 결과 데이터
-        timestamp:
-          type: string
-          format: date-time
-          title: 요청 응답 타임스탬프
-      title: API 공통응답
     MdOperationLinkId:
       type: object
       properties:
-        opCode:
-          type: string
-          description: 운영 코드
-        seq:
-          type: string
-          description: 인덱스
-      title: MdBizOperationLink 복합 Id 모델
-    MdOperationLinkIdDto:
-      type: object
-      properties:
         apiKey:
           type: string
           description: apiKey
@@ -3552,7 +3623,7 @@ components:
       required:
       - opCode
       - seq
-      title: "MdOperationLink 조회, 삭제 API 요청 DTO"
+      title: MdDeviceLinkId DTO
     APIResponseMdOperationLink:
       type: object
       properties:
@@ -3601,42 +3672,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdExecutionDeviceDto:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          description: apiKey
-          maxLength: 10
-          minLength: 1
-        messageId:
-          type: string
-          description: messageId
-        telegramId:
-          type: string
-          description: telegramId
-        messageNo:
-          type: string
-          description: messageNo
-        opCode:
-          type: string
-          description: 운영 코드
-          maxLength: 10
-          minLength: 0
-        eqCode:
-          type: string
-          maxLength: 20
-          minLength: 0
-        deviceCode:
-          type: string
-          maxLength: 20
-          minLength: 0
-      required:
-      - deviceCode
-      - eqCode
-      - opCode
-      title: "MdExecutionDevice 등록, 수정 API 요청 DTO"
-    APIResponseMdExecutionDeviceId:
+    APIResponseMdOperationLinkId:
       type: object
       properties:
         status:
@@ -3647,7 +3683,7 @@ components:
           type: string
           title: 메시지
         data:
-          $ref: '#/components/schemas/MdExecutionDeviceId'
+          $ref: '#/components/schemas/MdOperationLinkId'
           title: 결과 데이터
         timestamp:
           type: string
@@ -3655,19 +3691,6 @@ components:
           title: 요청 응답 타임스탬프
       title: API 공통응답
     MdExecutionDeviceId:
-      type: object
-      properties:
-        opCode:
-          type: string
-          description: 운영 코드
-        eqCode:
-          type: string
-          description: 설비 코드
-        deviceCode:
-          type: string
-          description: 장비 코드
-      title: MdExecutionDevice 복합 Id 모델
-    MdExecutionDeviceIdDto:
       type: object
       properties:
         apiKey:
@@ -3701,7 +3724,7 @@ components:
       - deviceCode
       - eqCode
       - opCode
-      title: "MdExecutionDevice 조회, 삭제 API 요청 DTO"
+      title: MdExecutionDeviceId DTO
     APIResponseMdExecutionDevice:
       type: object
       properties:
@@ -3753,7 +3776,25 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdEqDto:
+    APIResponseMdExecutionDeviceId:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+          title: 결과 상태
+        message:
+          type: string
+          title: 메시지
+        data:
+          $ref: '#/components/schemas/MdExecutionDeviceId'
+          title: 결과 데이터
+        timestamp:
+          type: string
+          format: date-time
+          title: 요청 응답 타임스탬프
+      title: API 공통응답
+    updateMdEq:
       type: object
       properties:
         apiKey:
@@ -3774,7 +3815,7 @@ components:
           type: string
           description: 설비 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         eqName:
           type: string
           description: 설비 명칭
@@ -3783,17 +3824,25 @@ components:
         eqType:
           type: string
           description: 설비 타입
-          maxLength: 10
-          minLength: 0
+          enum:
+          - STORAGE
+          - ROUTE
+          - PICK_A_PLACE
+          - SORT
         unitLevel:
-          type: integer
-          format: int32
-          description: "재고레벨 (원제고 1:팔레트, 원제고2:박스, 그외 1)"
+          type: string
+          description: "재고레벨 (원재고 1:팔레트, 원재고2:박스, 그외 1)"
+          enum:
+          - Pallet
+          - Box
+          - Etc
         unitType:
           type: string
-          description: "제고타입(A:원제고, B:출고박스, C:공팔레트)"
-          minLength: 1
-          pattern: "^[ABC]$"
+          description: "재고타입 (A:원재고, B:출고박스, C:공팔레트)"
+          enum:
+          - RawMaterials
+          - OutboundBox
+          - EmptyPallet
         statusCode:
           type: string
           description: 상태 코드
@@ -3808,16 +3857,14 @@ components:
           type: string
           description: 사용 여부 ?
           enum:
-          - "Y"
-          - "N"
-          example: "Y"
-          pattern: "^[YN]$"
+          - USE
+          - DISABLED
       required:
       - eqCode
       - unitLevel
       - unitType
-      title: "MdEq 등록, 수정 API 요청 DTO"
-    MdEqIdDto:
+      title: MdEq 수정 요청 DTO
+    readMdEq:
       type: object
       properties:
         apiKey:
@@ -3838,10 +3885,10 @@ components:
           type: string
           description: 설비 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
       required:
       - eqCode
-      title: "MdEq 조회, 삭제 API 요청 DTO"
+      title: MdEq 조회 요청 DTO
     APIResponseMdEq:
       type: object
       properties:
@@ -3917,7 +3964,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdDeviceDto:
+    deleteMdEq:
       type: object
       properties:
         apiKey:
@@ -3938,12 +3985,107 @@ components:
           type: string
           description: 설비 코드
           maxLength: 10
+          minLength: 0
+      required:
+      - eqCode
+      title: MdEq 삭제 요청 DTO
+    createMdEq:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
           minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        eqCode:
+          type: string
+          description: 설비 코드
+          maxLength: 10
+          minLength: 0
+        eqName:
+          type: string
+          description: 설비 명칭
+          maxLength: 200
+          minLength: 0
+        eqType:
+          type: string
+          description: 설비 타입
+          enum:
+          - STORAGE
+          - ROUTE
+          - PICK_A_PLACE
+          - SORT
+        unitLevel:
+          type: string
+          description: "재고레벨 (원재고 1:팔레트, 원재고2:박스, 그외 1)"
+          enum:
+          - Pallet
+          - Box
+          - Etc
+        unitType:
+          type: string
+          description: "재고타입 (A:원재고, B:출고박스, C:공팔레트)"
+          enum:
+          - RawMaterials
+          - OutboundBox
+          - EmptyPallet
+        statusCode:
+          type: string
+          description: 상태 코드
+          maxLength: 10
+          minLength: 0
+        statusDesc:
+          type: string
+          description: 상태 설명
+          maxLength: 200
+          minLength: 0
+        useYn:
+          type: string
+          description: 사용 여부 ?
+          enum:
+          - USE
+          - DISABLED
+      required:
+      - eqCode
+      - unitLevel
+      - unitType
+      title: MdEq 생성 요청 DTO
+    MdDeviceBody:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        eqCode:
+          type: string
+          description: 설비 코드
+          maxLength: 10
+          minLength: 0
         deviceCode:
           type: string
           description: 장비 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         deviceName:
           type: string
           description: 장비 명칭
@@ -3951,14 +4093,24 @@ components:
           minLength: 0
         funcType:
           type: string
-          description: 운영 타입
-          maxLength: 10
-          minLength: 0
+          description: 운영타입
+          enum:
+          - STORAGE
+          - ROUTE
+          - PICKING
+          - SORT
+          - ASSIST
         deviceType:
           type: string
-          description: 장비 타입
-          maxLength: 10
-          minLength: 0
+          description: 장비타입
+          enum:
+          - CRANE
+          - CELL
+          - SUTTLECAR
+          - LIFT
+          - AUTOMATEDVIHICLE
+          - CONVEYOR
+          - CHUTE
         ovEqCode:
           type: string
           description: 도킹 설비 코드
@@ -3972,8 +4124,11 @@ components:
         motionType:
           type: string
           description: 동작 타입
-          maxLength: 4
-          minLength: 0
+          enum:
+          - INBOUND
+          - MOVING
+          - OUTBOUND
+          - BOTH
         statusCode:
           type: string
           description: 상태 코드
@@ -3988,11 +4143,8 @@ components:
           type: string
           description: 사용 여부
           enum:
-          - "Y"
-          - "N"
-          example: "Y"
-          minLength: 1
-          pattern: "^[YN]$"
+          - USE
+          - DISABLED
         cfgCode:
           type: string
           description: 제어컨트롤러 코드
@@ -4003,8 +4155,7 @@ components:
       - deviceType
       - eqCode
       - funcType
-      - useYn
-      title: "MdDevice 등록, 수정 API 요청 DTO"
+      title: MdDeviceBody DTO
     APIResponseMdDeviceId:
       type: object
       properties:
@@ -4033,38 +4184,6 @@ components:
           type: string
           description: 장비 코드
       title: MdDeviceId 복합 Id 모델
-    MdDeviceIdDto:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          description: apiKey
-          maxLength: 10
-          minLength: 1
-        messageId:
-          type: string
-          description: messageId
-        telegramId:
-          type: string
-          description: telegramId
-        messageNo:
-          type: string
-          description: messageNo
-        eqCode:
-          type: string
-          description: 설비 코드
-          maxLength: 10
-          minLength: 1
-        deviceCode:
-          type: string
-          description: 장비 코드
-          maxLength: 10
-          minLength: 1
-      required:
-      - deviceCode
-      - eqCode
-      title: "MdDevice, MdDeviceStg, MdDevicePlace, MdDeviceSort, MdDeviceAssist 조\
-        회, 삭제 API 요청 DTO"
     APIResponseMdDevice:
       type: object
       properties:
@@ -4151,7 +4270,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdDeviceStgDto:
+    MdDeviceStgBody:
       type: object
       properties:
         apiKey:
@@ -4172,12 +4291,12 @@ components:
           type: string
           description: 설비 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         deviceCode:
           type: string
           description: 장비 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         linkEqCode:
           type: string
           description: 적제 설비 코드(크레인 설비 코드)2
@@ -4257,7 +4376,38 @@ components:
       - deviceCode
       - eqCode
       - statusCode
-      title: "MdDeviceStg 등록, 수정 API 요청 DTO"
+      title: MdDeviceStgBody DTO
+    MdDeviceStgId:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        eqCode:
+          type: string
+          description: 설비 코드
+          maxLength: 10
+          minLength: 0
+        deviceCode:
+          type: string
+          description: 장비 코드
+          maxLength: 10
+          minLength: 0
+      required:
+      - deviceCode
+      - eqCode
+      title: MdDeviceStgId DTO
     APIResponseMdDeviceStg:
       type: object
       properties:
@@ -4365,7 +4515,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdDeviceSortDto:
+    MdDeviceSortBody:
       type: object
       properties:
         apiKey:
@@ -4386,12 +4536,12 @@ components:
           type: string
           description: 설비 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         deviceCode:
           type: string
           description: 장비 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         sortNo:
           type: string
           description: 호기
@@ -4418,7 +4568,38 @@ components:
       required:
       - deviceCode
       - eqCode
-      title: "MdDeviceSort 등록, 수정 API 요청 DTO"
+      title: MdDeviceSortBody DTO
+    MdDeviceSortId:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        eqCode:
+          type: string
+          description: 설비 코드
+          maxLength: 10
+          minLength: 0
+        deviceCode:
+          type: string
+          description: 장비 코드
+          maxLength: 10
+          minLength: 0
+      required:
+      - deviceCode
+      - eqCode
+      title: MdDeviceSortId DTO
     APIResponseMdDeviceSort:
       type: object
       properties:
@@ -4484,7 +4665,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdDevicePlaceDto:
+    MdDevicePlaceBody:
       type: object
       properties:
         apiKey:
@@ -4505,12 +4686,12 @@ components:
           type: string
           description: 설비 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         deviceCode:
           type: string
           description: 장비 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         zoneNo:
           type: string
           description: 작업존
@@ -4534,7 +4715,38 @@ components:
       required:
       - deviceCode
       - eqCode
-      title: "MdDevicePlace 등록, 수정 API 요청 DTO"
+      title: MdDevicePlaceBody DTO
+    MdDevicePlaceId:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        eqCode:
+          type: string
+          description: 설비 코드
+          maxLength: 10
+          minLength: 0
+        deviceCode:
+          type: string
+          description: 장비 코드
+          maxLength: 10
+          minLength: 0
+      required:
+      - deviceCode
+      - eqCode
+      title: MdDevicePlaceId DTO
     APIResponseMdDevicePlace:
       type: object
       properties:
@@ -4595,7 +4807,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdDeviceLinkDto:
+    EditMdDeviceLink:
       type: object
       properties:
         apiKey:
@@ -4612,7 +4824,7 @@ components:
         messageNo:
           type: string
           description: messageNo
-        seqId:
+        seq:
           type: string
           description: 인덱스
           maxLength: 21
@@ -4634,9 +4846,9 @@ components:
         tdestCode:
           type: string
       required:
-      - seqId
-      title: "MdDeviceLink 등록, 수정 API 요청 DTO"
-    MdDeviceLinkIdDto:
+      - seq
+      title: EditMdDeviceLink DTO
+    MdDeviceLinkId:
       type: object
       properties:
         apiKey:
@@ -4653,14 +4865,14 @@ components:
         messageNo:
           type: string
           description: messageNo
-        seqId:
+        seq:
           type: string
           description: 인덱스
           maxLength: 21
           minLength: 0
       required:
-      - seqId
-      title: "MdDeviceLink 조회, 삭제 API 요청 DTO"
+      - seq
+      title: MdDeviceLinkId DTO
     APIResponseMdDeviceLink:
       type: object
       properties:
@@ -4718,7 +4930,41 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdDeviceCtrlDto:
+    CreateMdDeviceLink:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        eqCode:
+          type: string
+          description: 설비 코드
+          maxLength: 10
+          minLength: 0
+        deviceCode:
+          type: string
+          description: 장비 코드
+          maxLength: 10
+          minLength: 0
+        tdeviceCode:
+          type: string
+        teqCode:
+          type: string
+        tdestCode:
+          type: string
+      title: CreateMdDeviceLink DTO
+    MdDeviceCtrlBody:
       type: object
       properties:
         apiKey:
@@ -4739,7 +4985,7 @@ components:
           type: string
           description: 제어컨트롤러 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         cfgName:
           type: string
           description: 제어컨트롤러 명칭
@@ -4767,18 +5013,22 @@ components:
         infType:
           type: string
           description: "(0:기타, 1:SOCKET, 2:SERIAL)"
-          maxLength: 4
-          minLength: 0
+          enum:
+          - SOCKET
+          - API
+          - DB
         infModel:
           type: string
           description: "(C:Client, S:Server)"
-          maxLength: 1
-          minLength: 0
+          enum:
+          - Client
+          - Server
         commCode:
           type: string
           description: 통신상태
-          maxLength: 1
-          minLength: 0
+          enum:
+          - USE
+          - DISABLED
         commDesc:
           type: string
           description: 통신상태 설명
@@ -4786,16 +5036,14 @@ components:
           minLength: 0
         useYn:
           type: string
-          description: 사용 여부 ?
+          description: 사용 여부?
           enum:
-          - "Y"
-          - "N"
-          example: "Y"
-          pattern: "^[YN]$"
+          - USE
+          - DISABLED
       required:
       - cfgCode
-      title: "MdDeviceCtrl 등록, 수정 API 요청 DTO"
-    MdDeviceCtrlIdDto:
+      title: MdDeviceCtrlId DTO
+    MdDeviceCtrlId:
       type: object
       properties:
         apiKey:
@@ -4816,10 +5064,10 @@ components:
           type: string
           description: 제어컨트롤러 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
       required:
       - cfgCode
-      title: "MdDeviceCtrl 조회, 삭제 API 요청 DTO"
+      title: MdDeviceCtrlId DTO
     APIResponseMdDeviceCtrl:
       type: object
       properties:
@@ -4861,7 +5109,8 @@ components:
           type: string
           description: COM 이름
         infType:
-          type: string
+          type: integer
+          format: int32
           description: "(0:기타, 1:SOCKET, 2:SERIAL)"
         infModel:
           type: string
@@ -4904,7 +5153,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdDeviceCtrlMelsecDto:
+    MdDeviceCtrlMelsecBody:
       type: object
       properties:
         apiKey:
@@ -4925,12 +5174,12 @@ components:
           type: string
           description: 제어 콘트롤러 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         memoryType:
           type: string
           description: "메모리 타입 (D, M, L, ...)"
           maxLength: 1
-          minLength: 1
+          minLength: 0
         readAddr:
           type: integer
           format: int32
@@ -4942,13 +5191,14 @@ components:
         dataType:
           type: string
           description: "의사소통 데이터 코드(ASCII: ''1'', BINARY: ''2'')"
-          maxLength: 1
-          minLength: 1
+          enum:
+          - ASCII
+          - BINARY
       required:
       - cfgCode
       - memoryType
       - readAddr
-      title: "MdDeviceCtrlMelsec 등록, 수정 API 요청 DTO"
+      title: MdDeviceCtrlMelsecId DTO
     APIResponseMdDeviceCtrlMelsecId:
       type: object
       properties:
@@ -4981,42 +5231,6 @@ components:
           format: int32
           description: 데이터 읽기 시작 주소
       title: RegUnit 복합 Id 모델
-    MdDeviceCtrlMelsecIdDto:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          description: apiKey
-          maxLength: 10
-          minLength: 1
-        messageId:
-          type: string
-          description: messageId
-        telegramId:
-          type: string
-          description: telegramId
-        messageNo:
-          type: string
-          description: messageNo
-        cfgCode:
-          type: string
-          description: 제어 콘트롤러 코드
-          maxLength: 10
-          minLength: 1
-        memoryType:
-          type: string
-          description: "메모리 타입 (D, M, L, ...)"
-          maxLength: 1
-          minLength: 1
-        readAddr:
-          type: integer
-          format: int32
-          description: 데이터 읽기 시작 주소
-      required:
-      - cfgCode
-      - memoryType
-      - readAddr
-      title: "MdDeviceCtrlMelsec 조회, 삭제 API 요청 DTO"
     APIResponseMdDeviceCtrlMelsec:
       type: object
       properties:
@@ -5074,7 +5288,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdDeviceAssistDto:
+    MdDeviceAssistBody:
       type: object
       properties:
         apiKey:
@@ -5095,12 +5309,12 @@ components:
           type: string
           description: 설비 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         deviceCode:
           type: string
           description: 장비 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         rftEtc1:
           type: string
           description: rft_etc1
@@ -5139,7 +5353,38 @@ components:
       required:
       - deviceCode
       - eqCode
-      title: "MdDeviceAssist 등록, 수정 API 요청 DTO"
+      title: MdDeviceAssistBody DTO
+    MdDeviceAssistId:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        eqCode:
+          type: string
+          description: 설비 코드
+          maxLength: 10
+          minLength: 0
+        deviceCode:
+          type: string
+          description: 장비 코드
+          maxLength: 10
+          minLength: 0
+      required:
+      - deviceCode
+      - eqCode
+      title: MdDeviceAssistId DTO
     APIResponseMdDeviceAssist:
       type: object
       properties:
@@ -5209,7 +5454,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdBizDto:
+    MdBizBody:
       type: object
       properties:
         apiKey:
@@ -5230,12 +5475,15 @@ components:
           type: string
           description: 비즈니스 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         bizType:
           type: string
           description: 비즈니스 타입
-          maxLength: 4
-          minLength: 0
+          enum:
+          - IN
+          - OUT
+          - PICKING
+          - SORT
         bizName:
           type: string
           description: 비즈니스 이름
@@ -5248,8 +5496,8 @@ components:
           minLength: 0
       required:
       - bizCode
-      title: "MdBiz 등록, 수정 API 요청 DTO"
-    MdBizIdDto:
+      title: MdDeviceBody DTO
+    MdBizId:
       type: object
       properties:
         apiKey:
@@ -5270,10 +5518,10 @@ components:
           type: string
           description: 비즈니스 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
       required:
       - bizCode
-      title: "MdBiz 조회, 삭제 API 요청 DTO"
+      title: MdBizId DTO
     APIResponseMdBiz:
       type: object
       properties:
@@ -5328,7 +5576,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdBizOperationDto:
+    MdBizOperationBody:
       type: object
       properties:
         apiKey:
@@ -5349,12 +5597,12 @@ components:
           type: string
           description: 비즈니스 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         opCode:
           type: string
           description: 운영 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         priority:
           type: integer
           format: int32
@@ -5362,7 +5610,7 @@ components:
       required:
       - bizCode
       - opCode
-      title: "MdBizOperation 등록, 수정 API 요청 DTO"
+      title: MdBizOperationBody DTO
     APIResponseMdBizOperationId:
       type: object
       properties:
@@ -5391,37 +5639,6 @@ components:
           type: string
           description: 운영 코드
       title: MdBizOperation 복합 Id 모델
-    MdBizOperationIdDto:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          description: apiKey
-          maxLength: 10
-          minLength: 1
-        messageId:
-          type: string
-          description: messageId
-        telegramId:
-          type: string
-          description: telegramId
-        messageNo:
-          type: string
-          description: messageNo
-        bizCode:
-          type: string
-          description: 비즈니스 코드
-          maxLength: 10
-          minLength: 1
-        opCode:
-          type: string
-          description: 운영 코드
-          maxLength: 10
-          minLength: 1
-      required:
-      - bizCode
-      - opCode
-      title: "MdBizOperation 조회, 삭제 API 요청 DTO"
     APIResponseMdBizOperation:
       type: object
       properties:
@@ -5474,7 +5691,7 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    MdAppCtrlDto:
+    updateMdAppCtrl:
       type: object
       properties:
         apiKey:
@@ -5495,12 +5712,12 @@ components:
           type: string
           description: 시스템 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         apiId:
           type: string
           description: API 식별자
           maxLength: 100
-          minLength: 1
+          minLength: 0
         apiName:
           type: string
           description: API 명칭
@@ -5524,8 +5741,9 @@ components:
         commCode:
           type: string
           description: 통신상태
-          maxLength: 1
-          minLength: 1
+          enum:
+          - USE
+          - DISABLED
         commDesc:
           type: string
           description: 통신상태 설명
@@ -5539,7 +5757,8 @@ components:
       required:
       - apiId
       - appCode
-      title: "MdAppCtrl 등록, 수정 API 요청 DTO"
+      - commCode
+      title: MdAppCtrl 수정 요청 DTO
     APIResponseMdAppCtrlId:
       type: object
       properties:
@@ -5568,7 +5787,7 @@ components:
           type: string
           description: API 식별자
       title: MdAppCtrl 복합 Id 모델
-    MdAppCtrlIdDto:
+    readMdAppCtrl:
       type: object
       properties:
         apiKey:
@@ -5589,16 +5808,16 @@ components:
           type: string
           description: 시스템 코드
           maxLength: 10
-          minLength: 1
+          minLength: 0
         apiId:
           type: string
           description: API 식별자
           maxLength: 100
-          minLength: 1
+          minLength: 0
       required:
       - apiId
       - appCode
-      title: "MdAppCtrl 조회, 삭제 API 요청 DTO"
+      title: MdAppCtrl 조회 요청 DTO
     APIResponseMdAppCtrl:
       type: object
       properties:
@@ -5680,6 +5899,105 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
+    deleteMdAppCtrl:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        appCode:
+          type: string
+          description: 시스템 코드
+          maxLength: 10
+          minLength: 0
+        apiId:
+          type: string
+          description: API 식별자
+          maxLength: 100
+          minLength: 0
+      required:
+      - apiId
+      - appCode
+      title: MdAppCtrl 삭제 요청 DTO
+    createMdAppCtrl:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: apiKey
+          maxLength: 10
+          minLength: 1
+        messageId:
+          type: string
+          description: messageId
+        telegramId:
+          type: string
+          description: telegramId
+        messageNo:
+          type: string
+          description: messageNo
+        appCode:
+          type: string
+          description: 시스템 코드
+          maxLength: 10
+          minLength: 0
+        apiId:
+          type: string
+          description: API 식별자
+          maxLength: 100
+          minLength: 0
+        apiName:
+          type: string
+          description: API 명칭
+          maxLength: 200
+          minLength: 0
+        apiDescription:
+          type: string
+          description: API 설명
+          maxLength: 200
+          minLength: 0
+        method:
+          type: string
+          format: byte
+          description: HTTP METHOD (1:POST)
+        endpointUrl:
+          type: string
+          description: 호출할 전체 URL
+        baseUrl:
+          type: string
+          description: API 서버의 Base URL(도메인+포트))
+        commCode:
+          type: string
+          description: 통신상태
+          enum:
+          - USE
+          - DISABLED
+        commDesc:
+          type: string
+          description: 통신상태 설명
+          maxLength: 200
+          minLength: 0
+        updateId:
+          type: string
+          description: 수정주체 아이디
+          maxLength: 10
+          minLength: 0
+      required:
+      - apiId
+      - appCode
+      - commCode
+      title: MdAppCtrl 등록 요청 DTO
     updateFcsScheme:
       type: object
       properties:
