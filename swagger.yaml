@@ -3012,13 +3012,30 @@ components:
           type: string
           description: 장비타입
           enum:
-          - CRANE
+          - CRNE
+          - SHTL
           - CELL
-          - SUTTLECAR
           - LIFT
-          - AUTOMATEDVIHICLE
-          - CONVEYOR
-          - CHUTE
+          - NOCV
+          - AGVC
+          - AMRB
+          - RGVC
+          - OHTV
+          - CHTE
+          - SPCV
+          - MGGN
+          - DSPS
+          - LDRB
+          - UDRB
+          - MANL
+          - INDT
+          - TRCK
+          - BCRD
+          - RFID
+          - ATLB
+          - WRAP
+          - WKST
+          - ERCT
         deviceTypeName:
           type: string
           description: 장비 타입 명칭
@@ -3117,13 +3134,30 @@ components:
           type: string
           description: 장비타입
           enum:
-          - CRANE
+          - CRNE
+          - SHTL
           - CELL
-          - SUTTLECAR
           - LIFT
-          - AUTOMATEDVIHICLE
-          - CONVEYOR
-          - CHUTE
+          - NOCV
+          - AGVC
+          - AMRB
+          - RGVC
+          - OHTV
+          - CHTE
+          - SPCV
+          - MGGN
+          - DSPS
+          - LDRB
+          - UDRB
+          - MANL
+          - INDT
+          - TRCK
+          - BCRD
+          - RFID
+          - ATLB
+          - WRAP
+          - WKST
+          - ERCT
       required:
       - deviceType
       - funcType
@@ -3158,13 +3192,30 @@ components:
           type: string
           description: 장비타입
           enum:
-          - CRANE
+          - CRNE
+          - SHTL
           - CELL
-          - SUTTLECAR
           - LIFT
-          - AUTOMATEDVIHICLE
-          - CONVEYOR
-          - CHUTE
+          - NOCV
+          - AGVC
+          - AMRB
+          - RGVC
+          - OHTV
+          - CHTE
+          - SPCV
+          - MGGN
+          - DSPS
+          - LDRB
+          - UDRB
+          - MANL
+          - INDT
+          - TRCK
+          - BCRD
+          - RFID
+          - ATLB
+          - WRAP
+          - WKST
+          - ERCT
         deviceTypeName:
           type: string
           description: 장비 타입 명칭
@@ -3827,7 +3878,7 @@ components:
           enum:
           - STORAGE
           - ROUTE
-          - PICK_A_PLACE
+          - PICKING
           - SORT
         unitLevel:
           type: string
@@ -4022,7 +4073,7 @@ components:
           enum:
           - STORAGE
           - ROUTE
-          - PICK_A_PLACE
+          - PICKING
           - SORT
         unitLevel:
           type: string
@@ -4104,13 +4155,30 @@ components:
           type: string
           description: 장비타입
           enum:
-          - CRANE
+          - CRNE
+          - SHTL
           - CELL
-          - SUTTLECAR
           - LIFT
-          - AUTOMATEDVIHICLE
-          - CONVEYOR
-          - CHUTE
+          - NOCV
+          - AGVC
+          - AMRB
+          - RGVC
+          - OHTV
+          - CHTE
+          - SPCV
+          - MGGN
+          - DSPS
+          - LDRB
+          - UDRB
+          - MANL
+          - INDT
+          - TRCK
+          - BCRD
+          - RFID
+          - ATLB
+          - WRAP
+          - WKST
+          - ERCT
         ovEqCode:
           type: string
           description: 도킹 설비 코드
@@ -4125,10 +4193,11 @@ components:
           type: string
           description: 동작 타입
           enum:
-          - INBOUND
-          - MOVING
-          - OUTBOUND
+          - IN
+          - OUT
           - BOTH
+          - CELL_SPC_POINT
+          - UNIT_SPC_POINT
         statusCode:
           type: string
           description: 상태 코드
@@ -4550,8 +4619,10 @@ components:
         ctrlMode:
           type: string
           description: 제어유형
-          maxLength: 1
-          minLength: 0
+          enum:
+          - AUTO
+          - MANUAL
+          - SEMI
         path:
           type: integer
           format: int32
@@ -4563,8 +4634,9 @@ components:
         svcType:
           type: string
           description: 서비스타입
-          maxLength: 1
-          minLength: 0
+          enum:
+          - NORMAL
+          - REJECT
       required:
       - deviceCode
       - eqCode
@@ -4707,11 +4779,12 @@ components:
           description: PICK/PLACE 장비 코드
           maxLength: 20
           minLength: 0
-        motionType:
+        pickLocType:
           type: string
           description: "PICK:0, PLACE:1"
-          maxLength: 1
-          minLength: 0
+          enum:
+          - PICK
+          - PLACE
       required:
       - deviceCode
       - eqCode
@@ -4783,7 +4856,7 @@ components:
         linkDeviceCode:
           type: string
           description: PICK/PLACE 장비 코드
-        motionType:
+        pickLocType:
           type: string
           description: "PICK:0, PLACE:1"
       title: MdDevicePlace 모델
@@ -4994,8 +5067,12 @@ components:
         cfgModel:
           type: string
           description: "제어컨트롤러 TYPE(1:BCR, 2:M-PLC, 3:MFC )"
-          maxLength: 4
-          minLength: 0
+          enum:
+          - BCR
+          - M_PLC
+          - MFC
+          - S_PLC
+          - L_PLC
         ctrlIp:
           type: string
           description: 제어컨트롤러 IP
@@ -5014,9 +5091,9 @@ components:
           type: string
           description: "(0:기타, 1:SOCKET, 2:SERIAL)"
           enum:
+          - ETC
           - SOCKET
-          - API
-          - DB
+          - SERIAL
         infModel:
           type: string
           description: "(C:Client, S:Server)"
@@ -5109,8 +5186,7 @@ components:
           type: string
           description: COM 이름
         infType:
-          type: integer
-          format: int32
+          type: string
           description: "(0:기타, 1:SOCKET, 2:SERIAL)"
         infModel:
           type: string
@@ -5178,8 +5254,18 @@ components:
         memoryType:
           type: string
           description: "메모리 타입 (D, M, L, ...)"
-          maxLength: 1
-          minLength: 0
+          enum:
+          - X
+          - "Y"
+          - M
+          - L
+          - F
+          - V
+          - B
+          - D
+          - W
+          - R
+          minLength: 1
         readAddr:
           type: integer
           format: int32
@@ -6349,13 +6435,30 @@ components:
           type: string
           description: 장비타입
           enum:
-          - CRANE
+          - CRNE
+          - SHTL
           - CELL
-          - SUTTLECAR
           - LIFT
-          - AUTOMATEDVIHICLE
-          - CONVEYOR
-          - CHUTE
+          - NOCV
+          - AGVC
+          - AMRB
+          - RGVC
+          - OHTV
+          - CHTE
+          - SPCV
+          - MGGN
+          - DSPS
+          - LDRB
+          - UDRB
+          - MANL
+          - INDT
+          - TRCK
+          - BCRD
+          - RFID
+          - ATLB
+          - WRAP
+          - WKST
+          - ERCT
       required:
       - deviceLinkSeq
       - deviceToolSeq
@@ -6428,13 +6531,30 @@ components:
           type: string
           description: 장비타입
           enum:
-          - CRANE
+          - CRNE
+          - SHTL
           - CELL
-          - SUTTLECAR
           - LIFT
-          - AUTOMATEDVIHICLE
-          - CONVEYOR
-          - CHUTE
+          - NOCV
+          - AGVC
+          - AMRB
+          - RGVC
+          - OHTV
+          - CHTE
+          - SPCV
+          - MGGN
+          - DSPS
+          - LDRB
+          - UDRB
+          - MANL
+          - INDT
+          - TRCK
+          - BCRD
+          - RFID
+          - ATLB
+          - WRAP
+          - WKST
+          - ERCT
       required:
       - deviceLinkSeq
       - deviceType
@@ -6579,13 +6699,30 @@ components:
           type: string
           description: 장비타입
           enum:
-          - CRANE
+          - CRNE
+          - SHTL
           - CELL
-          - SUTTLECAR
           - LIFT
-          - AUTOMATEDVIHICLE
-          - CONVEYOR
-          - CHUTE
+          - NOCV
+          - AGVC
+          - AMRB
+          - RGVC
+          - OHTV
+          - CHTE
+          - SPCV
+          - MGGN
+          - DSPS
+          - LDRB
+          - UDRB
+          - MANL
+          - INDT
+          - TRCK
+          - BCRD
+          - RFID
+          - ATLB
+          - WRAP
+          - WKST
+          - ERCT
       required:
       - deviceToolSeq
       - deviceType
