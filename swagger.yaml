@@ -905,6 +905,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIResponseListMdDevice'
+  /api/master/md-devices/edit-all-device-place:
+    post:
+      tags:
+      - MD_DEVICE
+      summary: MdDevicePlace 복수 수정
+      operationId: editAllMdDevicePlace
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditAllMdDevicePlace'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIResponseListMdDevicePlace'
   /api/master/md-devices/detail:
     post:
       tags:
@@ -924,17 +943,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIResponseResponseDetailMdDevice'
-  /api/master/md-devices/add-device-stg:
+  /api/master/md-devices/delete-all-device-place:
     post:
       tags:
       - MD_DEVICE
-      summary: MdDeviceStg 추가
-      operationId: addMdDeviceStg
+      summary: MdDevicePlace 복수 삭제
+      operationId: deleteAllMdDevicePlace
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AddMdDeviceStg'
+              $ref: '#/components/schemas/DeleteAllMdDevicePlace'
         required: true
       responses:
         "200":
@@ -942,18 +961,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/APIResponseMdDeviceStg'
-  /api/master/md-devices/add-device-sort:
+                $ref: '#/components/schemas/APIResponseListMdDevicePlace'
+  /api/master/md-devices/add-all-device-place:
     post:
       tags:
       - MD_DEVICE
-      summary: MdDeviceSort 추가
-      operationId: addMdDeviceSort
+      summary: MdDevicePlace 복수 추가
+      operationId: addAllMdDevicePlace
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AddMdDeviceSort'
+              $ref: '#/components/schemas/AddAllMdDevicePlace'
         required: true
       responses:
         "200":
@@ -961,45 +980,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/APIResponseMdDeviceSort'
-  /api/master/md-devices/add-device-place:
-    post:
-      tags:
-      - MD_DEVICE
-      summary: MdDevicePlace 추가
-      operationId: addMdDevicePlace
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AddMdDevicePlace'
-        required: true
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/APIResponseMdDevicePlace'
-  /api/master/md-devices/add-device-assist:
-    post:
-      tags:
-      - MD_DEVICE
-      summary: MdDeviceAssist 추가
-      operationId: addMdDeviceAssist
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AddMdDeviceAssist'
-        required: true
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/APIResponseMdDeviceAssist'
+                $ref: '#/components/schemas/APIResponseListMdDevicePlace'
   /api/master/md-device-stgs/update:
     post:
       tags:
@@ -1227,7 +1208,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/APIResponseResponseDeleteMdDevicePlace'
+                $ref: '#/components/schemas/APIResponseMdDevicePlace'
   /api/master/md-device-links/update:
     post:
       tags:
@@ -1341,8 +1322,27 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/APIResponseString'
-  /api/master/md-device-ctrls/read-detail:
+                $ref: '#/components/schemas/APIResponseMdDeviceCtrl'
+  /api/master/md-device-ctrls/read-all:
+    post:
+      tags:
+      - MD_DEVICE_CTRL
+      summary: 제어컨트롤로 정보 목록 조회
+      operationId: findAll_14
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReadAllMdDeviceCtrl'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIResponseListMdDeviceCtrl'
+  /api/master/md-device-ctrls/detail:
     post:
       tags:
       - MD_DEVICE_CTRL
@@ -1360,26 +1360,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/APIResponseResponseDetailMdDeviceCtrl'
-  /api/master/md-device-ctrls/read-all:
-    post:
-      tags:
-      - MD_DEVICE_CTRL
-      summary: 제어컨트롤로 정보 목록 조회
-      operationId: findAll_14
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/APIRequestBase'
-        required: true
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/APIResponseListMdDeviceCtrl'
+                $ref: '#/components/schemas/APIResponseMdDeviceCtrl'
   /api/master/md-device-ctrls/delete:
     post:
       tags:
@@ -1417,18 +1398,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/APIResponseString'
+                $ref: '#/components/schemas/APIResponseMdDeviceCtrl'
   /api/master/md-device-ctrl-melsecs/update:
     post:
       tags:
       - MD_DEVICE_CTRL_MELSEC
       summary: Melsec PLC INF 사양 마스터 수정
-      operationId: edit_1
+      operationId: editOne_11
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceCtrlMelsecBody'
+              $ref: '#/components/schemas/EditMdDeviceCtrlMelsec'
         required: true
       responses:
         "200":
@@ -1436,7 +1417,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/APIResponseMdDeviceCtrlMelsecId'
+                $ref: '#/components/schemas/APIResponseMdDeviceCtrlMelsec'
   /api/master/md-device-ctrl-melsecs/read:
     post:
       tags:
@@ -1447,7 +1428,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceCtrlMelsecId'
+              $ref: '#/components/schemas/ReadMdDeviceCtrlMelsec'
         required: true
       responses:
         "200":
@@ -1466,7 +1447,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/APIRequestBase'
+              $ref: '#/components/schemas/ReadAllMdDeviceCtrlMelsec'
         required: true
       responses:
         "200":
@@ -1480,12 +1461,12 @@ paths:
       tags:
       - MD_DEVICE_CTRL_MELSEC
       summary: Melsec PLC INF 사양 마스터 삭제
-      operationId: delete_4
+      operationId: deleteOne_10
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceCtrlMelsecId'
+              $ref: '#/components/schemas/DeleteMdDeviceCtrlMelsec'
         required: true
       responses:
         "200":
@@ -1493,7 +1474,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/APIResponseMdDeviceCtrlMelsecId'
+                $ref: '#/components/schemas/APIResponseMdDeviceCtrlMelsec'
   /api/master/md-device-ctrl-melsecs/create:
     post:
       tags:
@@ -1504,7 +1485,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MdDeviceCtrlMelsecBody'
+              $ref: '#/components/schemas/CreateMdDeviceCtrlMelsec'
         required: true
       responses:
         "200":
@@ -1518,7 +1499,7 @@ paths:
       tags:
       - MD_DEVICE_ASSIST
       summary: 보조장비 상세 마스터 수정
-      operationId: editOne_11
+      operationId: editOne_12
       requestBody:
         content:
           application/json:
@@ -1575,7 +1556,7 @@ paths:
       tags:
       - MD_DEVICE_ASSIST
       summary: 보조장비 상세 마스터 삭제
-      operationId: deleteOne_10
+      operationId: deleteOne_11
       requestBody:
         content:
           application/json:
@@ -1594,7 +1575,7 @@ paths:
       tags:
       - MD_BIZ
       summary: 비즈니스 수정
-      operationId: editOne_12
+      operationId: editOne_13
       requestBody:
         content:
           application/json:
@@ -1632,7 +1613,7 @@ paths:
       tags:
       - MD_BIZ
       summary: 비즈니스 삭제
-      operationId: deleteOne_11
+      operationId: deleteOne_12
       requestBody:
         content:
           application/json:
@@ -1670,7 +1651,7 @@ paths:
       tags:
       - MD_BIZ_OPERATION
       summary: 비즈니스 운영 시나리오 수정
-      operationId: edit_2
+      operationId: edit_1
       requestBody:
         content:
           application/json:
@@ -1727,7 +1708,7 @@ paths:
       tags:
       - MD_BIZ_OPERATION
       summary: 비즈니스 운영 시나리오 삭제
-      operationId: delete_5
+      operationId: delete_4
       requestBody:
         content:
           application/json:
@@ -1765,7 +1746,7 @@ paths:
       tags:
       - MD_APP_CTRL
       summary: 시스템 표준 인터페이스 사양 수정
-      operationId: editOne_13
+      operationId: editOne_14
       requestBody:
         content:
           application/json:
@@ -1822,7 +1803,7 @@ paths:
       tags:
       - MD_APP_CTRL
       summary: 시스템 표준 인터페이스 사양 삭제
-      operationId: deleteOne_12
+      operationId: deleteOne_13
       requestBody:
         content:
           application/json:
@@ -1860,7 +1841,7 @@ paths:
       tags:
       - FCS_SCHEME
       summary: 스키마 수정
-      operationId: edit_3
+      operationId: edit_2
       requestBody:
         content:
           application/json:
@@ -1917,7 +1898,7 @@ paths:
       tags:
       - FCS_SCHEME
       summary: 스키마 삭제
-      operationId: delete_6
+      operationId: delete_5
       requestBody:
         content:
           application/json:
@@ -1955,7 +1936,7 @@ paths:
       tags:
       - FCS_DEVICE_TOOL
       summary: 도구 기초정보 수정
-      operationId: editOne_14
+      operationId: editOne_15
       requestBody:
         content:
           application/json:
@@ -2012,7 +1993,7 @@ paths:
       tags:
       - FCS_DEVICE_TOOL
       summary: 도구 기초정보 삭제
-      operationId: deleteOne_13
+      operationId: deleteOne_14
       requestBody:
         content:
           application/json:
@@ -2050,7 +2031,7 @@ paths:
       tags:
       - FCS_DEVICE_LINK
       summary: 장비 도구 관계 수정
-      operationId: edit_4
+      operationId: edit_3
       requestBody:
         content:
           application/json:
@@ -2145,7 +2126,7 @@ paths:
       tags:
       - FCS_DEVICE_LINK
       summary: 장비 도구 관계 삭제
-      operationId: delete_7
+      operationId: delete_6
       requestBody:
         content:
           application/json:
@@ -2245,7 +2226,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ReadFcsCanvas'
+              $ref: '#/components/schemas/ReadAllFcsCanvas'
         required: true
       responses:
         "200":
@@ -2259,7 +2240,7 @@ paths:
       tags:
       - FCS_CANVAS
       summary: 캔버스 삭제
-      operationId: deleteOne_14
+      operationId: deleteOne_15
       requestBody:
         content:
           application/json:
@@ -2373,7 +2354,7 @@ paths:
       tags:
       - FCS_CANVAS_TOOL
       summary: 캔버스 도구 삭제
-      operationId: deleteOne_15
+      operationId: deleteOne_16
       requestBody:
         content:
           application/json:
@@ -2430,7 +2411,7 @@ paths:
       tags:
       - FCS_CANVAS_OPERATION_LINK
       summary: 캔버스 운영 설비 관계 수정
-      operationId: editOne_15
+      operationId: editOne_16
       requestBody:
         content:
           application/json:
@@ -2506,7 +2487,7 @@ paths:
       tags:
       - FCS_CANVAS_OPERATION_LINK
       summary: 캔버스 운영 설비 관계 삭제
-      operationId: deleteOne_16
+      operationId: deleteOne_17
       requestBody:
         content:
           application/json:
@@ -4439,7 +4420,7 @@ components:
         cfgCode:
           type: string
           description: 제어컨트롤러 코드
-          maxLength: 10
+          maxLength: 20
           minLength: 0
         mdDeviceStgDataList:
           type: array
@@ -4480,11 +4461,6 @@ components:
           description: 장비 코드
           maxLength: 20
           minLength: 0
-        zoneNo:
-          type: string
-          description: 작업존
-          maxLength: 10
-          minLength: 0
         linkEqCode:
           type: string
           description: PICK/PLACE 설비 코드
@@ -4495,6 +4471,11 @@ components:
           description: PICK/PLACE 장비 코드
           maxLength: 20
           minLength: 0
+        zoneNo:
+          type: string
+          description: 작업존
+          maxLength: 10
+          minLength: 0
         pickLocType:
           type: string
           description: "PICK:0, PLACE:1"
@@ -4502,9 +4483,35 @@ components:
           - "0"
           - "1"
           example: 0
+        maxAssignCount:
+          type: integer
+          format: int32
+          description: "허용 수량 (0: 무제한, 1 ~ 허용수량)"
+          minimum: 0
+        unitLevel:
+          type: integer
+          format: int32
+          description: "재고레벨 (원재고 1:팔레트, 원재고2:박스, 그외 1)"
+          enum:
+          - "1"
+          - "2"
+          - "3"
+          example: 1
+        unitType:
+          type: string
+          description: "재고타입 (A:원재고, B:출고박스, C:공팔레트)"
+          enum:
+          - A
+          - B
+          - C
+          example: A
       required:
       - deviceCode
       - eqCode
+      - linkDeviceCode
+      - linkEqCode
+      - unitLevel
+      - unitType
       title: MdDevicePlace data DTO
     MdDeviceSortData:
       type: object
@@ -4775,18 +4782,29 @@ components:
         deviceCode:
           type: string
           description: 장비 코드
-        zoneNo:
-          type: string
-          description: 작업존
         linkEqCode:
           type: string
           description: PICK/PLACE 설비 코드
         linkDeviceCode:
           type: string
           description: PICK/PLACE 장비 코드
+        zoneNo:
+          type: string
+          description: 작업존
         pickLocType:
           type: string
           description: "PICK:0, PLACE:1"
+        maxAssignCount:
+          type: integer
+          format: int32
+          description: "허용 수량 (0: 무제한, 1 ~ 허용수량)"
+        unitLevel:
+          type: integer
+          format: int32
+          description: "재고레벨 (원재고 1:팔레트, 원재고2:박스, 그외 1)"
+        unitType:
+          type: string
+          description: "재고타입 (A:원재고, B:출고박스, C:공팔레트)"
       title: MdDevicePlace 모델
     MdDeviceSort:
       type: object
@@ -4943,6 +4961,38 @@ components:
           $ref: '#/components/schemas/APIRequestBase'
           description: 요청 공통 헤더
       title: MdDevice 모든 목록 조회 요청 DTO
+    EditAllMdDevicePlace:
+      type: object
+      properties:
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
+        mdDevicePlaceDataList:
+          type: array
+          description: 요청 데이터 리스트
+          items:
+            $ref: '#/components/schemas/MdDevicePlaceData'
+      title: MdDevicePlace 복수 생성 요청 DTO
+    APIResponseListMdDevicePlace:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+          title: 결과 상태
+        message:
+          type: string
+          title: 메시지
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MdDevicePlace'
+          title: 결과 데이터
+        timestamp:
+          type: string
+          format: date-time
+          title: 요청 응답 타임스탬프
+      title: API 공통응답
     DetailMdDevice:
       type: object
       properties:
@@ -4988,7 +5038,31 @@ components:
           $ref: '#/components/schemas/MdDevice'
           description: MdDevice
       title: MdDevice 상세 조회 응답 DTO
-    AddMdDeviceStg:
+    DeleteAllMdDevicePlace:
+      type: object
+      properties:
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
+        mdDevicePlaceDataList:
+          type: array
+          description: 요청 데이터 리스트
+          items:
+            $ref: '#/components/schemas/MdDevicePlaceData'
+      title: MdDevicePlace 복수 삭제 요청 DTO
+    AddAllMdDevicePlace:
+      type: object
+      properties:
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
+        mdDevicePlaceDataList:
+          type: array
+          description: 요청 데이터 리스트
+          items:
+            $ref: '#/components/schemas/MdDevicePlaceData'
+      title: MdDevicePlace 복수 생성 요청 DTO
+    EditMdDeviceStg:
       type: object
       properties:
         head:
@@ -4997,7 +5071,7 @@ components:
         mdDeviceStgData:
           $ref: '#/components/schemas/MdDeviceStgData'
           description: 요청 데이터
-      title: MdDeviceStg 생성 요청 DTO
+      title: MdDeviceStg 수정 DTO
     APIResponseMdDeviceStg:
       type: object
       properties:
@@ -5016,100 +5090,6 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    AddMdDeviceSort:
-      type: object
-      properties:
-        head:
-          $ref: '#/components/schemas/APIRequestBase'
-          description: 요청 공통 헤더
-        mdDeviceSortData:
-          $ref: '#/components/schemas/MdDeviceSortData'
-          description: 요청 데이터
-      title: MdDeviceSort 생성 요청 DTO
-    APIResponseMdDeviceSort:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-          title: 결과 상태
-        message:
-          type: string
-          title: 메시지
-        data:
-          $ref: '#/components/schemas/MdDeviceSort'
-          title: 결과 데이터
-        timestamp:
-          type: string
-          format: date-time
-          title: 요청 응답 타임스탬프
-      title: API 공통응답
-    AddMdDevicePlace:
-      type: object
-      properties:
-        head:
-          $ref: '#/components/schemas/APIRequestBase'
-          description: 요청 공통 헤더
-        mdDevicePlaceData:
-          $ref: '#/components/schemas/MdDevicePlaceData'
-          description: 요청 데이터
-      title: MdDevicePlace 생성 요청 DTO
-    APIResponseMdDevicePlace:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-          title: 결과 상태
-        message:
-          type: string
-          title: 메시지
-        data:
-          $ref: '#/components/schemas/MdDevicePlace'
-          title: 결과 데이터
-        timestamp:
-          type: string
-          format: date-time
-          title: 요청 응답 타임스탬프
-      title: API 공통응답
-    AddMdDeviceAssist:
-      type: object
-      properties:
-        head:
-          $ref: '#/components/schemas/APIRequestBase'
-          description: 요청 공통 헤더
-        mdDeviceAssistData:
-          $ref: '#/components/schemas/MdDeviceAssistData'
-          description: 요청 데이터
-      title: MdDeviceAssist 생성 요청 DTO
-    APIResponseMdDeviceAssist:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-          title: 결과 상태
-        message:
-          type: string
-          title: 메시지
-        data:
-          $ref: '#/components/schemas/MdDeviceAssist'
-          title: 결과 데이터
-        timestamp:
-          type: string
-          format: date-time
-          title: 요청 응답 타임스탬프
-      title: API 공통응답
-    EditMdDeviceStg:
-      type: object
-      properties:
-        head:
-          $ref: '#/components/schemas/APIRequestBase'
-          description: 요청 공통 헤더
-        mdDeviceStgData:
-          $ref: '#/components/schemas/MdDeviceStgData'
-          description: 요청 데이터
-      title: MdDeviceStg 수정 DTO
     ReadMdDeviceStg:
       type: object
       properties:
@@ -5215,6 +5195,24 @@ components:
           $ref: '#/components/schemas/MdDeviceSortData'
           description: 요청 데이터
       title: MdDeviceSort 수정 DTO
+    APIResponseMdDeviceSort:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+          title: 결과 상태
+        message:
+          type: string
+          title: 메시지
+        data:
+          $ref: '#/components/schemas/MdDeviceSort'
+          title: 결과 데이터
+        timestamp:
+          type: string
+          format: date-time
+          title: 요청 응답 타임스탬프
+      title: API 공통응답
     ReadMdDeviceSort:
       type: object
       properties:
@@ -5320,6 +5318,24 @@ components:
           $ref: '#/components/schemas/MdDevicePlaceData'
           description: 요청 데이터
       title: MdDevicePlace 수정 DTO
+    APIResponseMdDevicePlace:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+          title: 결과 상태
+        message:
+          type: string
+          title: 메시지
+        data:
+          $ref: '#/components/schemas/MdDevicePlace'
+          title: 결과 데이터
+        timestamp:
+          type: string
+          format: date-time
+          title: 요청 응답 타임스탬프
+      title: API 공통응답
     ReadMdDevicePlace:
       type: object
       properties:
@@ -5329,16 +5345,28 @@ components:
         eqCode:
           type: string
           description: 설비 코드
-          maxLength: 10
+          maxLength: 20
           minLength: 0
         deviceCode:
           type: string
           description: 장비 코드
-          maxLength: 10
+          maxLength: 20
+          minLength: 0
+        linkEqCode:
+          type: string
+          description: PICK/PLACE 설비 코드
+          maxLength: 20
+          minLength: 0
+        linkDeviceCode:
+          type: string
+          description: PICK/PLACE 장비 코드
+          maxLength: 20
           minLength: 0
       required:
       - deviceCode
       - eqCode
+      - linkDeviceCode
+      - linkEqCode
       title: MdDevicePlace 조회 DTO
     ReadAllMdDevicePlace:
       type: object
@@ -5347,26 +5375,6 @@ components:
           $ref: '#/components/schemas/APIRequestBase'
           description: 요청 공통 헤더
       title: MdDevicePlace 모든 목록 조회 DTO
-    APIResponseListMdDevicePlace:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-          title: 결과 상태
-        message:
-          type: string
-          title: 메시지
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MdDevicePlace'
-          title: 결과 데이터
-        timestamp:
-          type: string
-          format: date-time
-          title: 요청 응답 타임스탬프
-      title: API 공통응답
     DeleteMdDevicePlace:
       type: object
       properties:
@@ -5376,45 +5384,29 @@ components:
         eqCode:
           type: string
           description: 설비 코드
-          maxLength: 10
+          maxLength: 20
           minLength: 0
         deviceCode:
           type: string
           description: 장비 코드
-          maxLength: 10
+          maxLength: 20
+          minLength: 0
+        linkEqCode:
+          type: string
+          description: PICK/PLACE 설비 코드
+          maxLength: 20
+          minLength: 0
+        linkDeviceCode:
+          type: string
+          description: PICK/PLACE 장비 코드
+          maxLength: 20
           minLength: 0
       required:
       - deviceCode
       - eqCode
+      - linkDeviceCode
+      - linkEqCode
       title: MdDevicePlace 삭제 DTO
-    APIResponseResponseDeleteMdDevicePlace:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-          title: 결과 상태
-        message:
-          type: string
-          title: 메시지
-        data:
-          $ref: '#/components/schemas/ResponseDeleteMdDevicePlace'
-          title: 결과 데이터
-        timestamp:
-          type: string
-          format: date-time
-          title: 요청 응답 타임스탬프
-      title: API 공통응답
-    ResponseDeleteMdDevicePlace:
-      type: object
-      properties:
-        eqCode:
-          type: string
-          description: 설비 코드
-        deviceCode:
-          type: string
-          description: 장비 코드
-      title: MdDevicePlace 삭제 응답 DTO
     EditMdDeviceLink:
       type: object
       properties:
@@ -5436,9 +5428,9 @@ components:
           description: 장비 코드
           maxLength: 20
           minLength: 0
-        teqCode:
-          type: string
         tdeviceCode:
+          type: string
+        teqCode:
           type: string
         tdestCode:
           type: string
@@ -5475,9 +5467,9 @@ components:
         seqId:
           type: string
           description: 인덱스
-        teqCode:
-          type: string
         tdeviceCode:
+          type: string
+        teqCode:
           type: string
         tdestCode:
           type: string
@@ -5553,70 +5545,31 @@ components:
           description: 장비 코드
           maxLength: 10
           minLength: 0
-        teqCode:
-          type: string
         tdeviceCode:
+          type: string
+        teqCode:
           type: string
         tdestCode:
           type: string
       title: MdDeviceLink 생성 DTO
-    CreateCtrlMelsec:
-      type: object
-      properties:
-        memoryType:
-          type: string
-          description: "메모리 타입 코드 (X, Y, M, L, F, V, B, D, W, R)"
-          enum:
-          - X
-          - "Y"
-          - M
-          - L
-          - F
-          - V
-          - B
-          - D
-          - W
-          - R
-          example: X
-          minLength: 1
-        readAddr:
-          type: integer
-          format: int32
-          description: 데이터 읽기 시작 주소
-          minimum: 0
-        readCount:
-          type: integer
-          format: int32
-          description: 데이터 읽기 수량
-          minimum: 0
-        dataType:
-          type: string
-          description: "데이터 타입 코드 (1: ASCII, 2: BINARY)"
-          enum:
-          - "1"
-          - "2"
-          example: 1
-      required:
-      - memoryType
-      - readAddr
-      title: MdDeviceCtrlMelsecId DTO
     EditMdDeviceCtrl:
       type: object
       properties:
-        apiKey:
-          type: string
-          description: apiKey
-          maxLength: 10
-          minLength: 1
-        messageId:
-          type: string
-          description: messageId
-        telegramId:
-          type: string
-          description: telegramId
-        messageNo:
-          type: string
-          description: messageNo
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
+        mdDeviceCtrlData:
+          $ref: '#/components/schemas/MdDeviceCtrlData'
+          description: 요청 데이터
+        mdDeviceCtrlMelsecList:
+          type: array
+          description: 제어기 사양 마스터 리스트
+          items:
+            $ref: '#/components/schemas/MdDeviceCtrlMelsecData'
+      title: MdDeviceCtrl 수정 요청 DTO
+    MdDeviceCtrlData:
+      type: object
+      properties:
         cfgCode:
           type: string
           description: 제어컨트롤러 코드
@@ -5674,40 +5627,56 @@ components:
           - "Y"
           - "N"
           example: "Y"
-        mdDeviceCtrlMelsecs:
-          type: array
-          description: 제어기 사양 마스터 리스트
-          items:
-            $ref: '#/components/schemas/CreateCtrlMelsec'
       required:
       - cfgCode
-      title: MdDeviceCtrl 수정 요청 DTO
-    DetailMdDeviceCtrl:
+      title: MdOperation data DTO
+    MdDeviceCtrlMelsecData:
       type: object
       properties:
-        apiKey:
-          type: string
-          description: apiKey
-          maxLength: 10
-          minLength: 1
-        messageId:
-          type: string
-          description: messageId
-        telegramId:
-          type: string
-          description: telegramId
-        messageNo:
-          type: string
-          description: messageNo
         cfgCode:
           type: string
-          description: 제어컨트롤러 코드
-          maxLength: 10
+          description: 제어 콘트롤러 코드
+          maxLength: 20
           minLength: 0
+        memoryType:
+          type: string
+          description: "메모리 타입 코드 (X, Y, M, L, F, V, B, D, W, R)"
+          enum:
+          - X
+          - "Y"
+          - M
+          - L
+          - F
+          - V
+          - B
+          - D
+          - W
+          - R
+          example: X
+          minLength: 1
+        readAddr:
+          type: integer
+          format: int32
+          description: 데이터 읽기 시작 주소
+          minimum: 0
+        readCount:
+          type: integer
+          format: int32
+          description: 데이터 읽기 수량
+          minimum: 0
+        dataType:
+          type: string
+          description: "데이터 타입 코드 (1: ASCII, 2: BINARY)"
+          enum:
+          - "1"
+          - "2"
+          example: 1
       required:
       - cfgCode
-      title: MdDeviceCtrl 상세 조회 요청 DTO
-    APIResponseResponseDetailMdDeviceCtrl:
+      - memoryType
+      - readAddr
+      title: MdDeviceCtrlMelsec data DTO
+    APIResponseMdDeviceCtrl:
       type: object
       properties:
         status:
@@ -5718,7 +5687,7 @@ components:
           type: string
           title: 메시지
         data:
-          $ref: '#/components/schemas/ResponseDetailMdDeviceCtrl'
+          $ref: '#/components/schemas/MdDeviceCtrl'
           title: 결과 데이터
         timestamp:
           type: string
@@ -5770,6 +5739,11 @@ components:
           type: string
           format: date-time
           description: 변경일시
+        mdDeviceCtrlMelsecList:
+          type: array
+          description: MdDeviceCtrlMelsec 리스트
+          items:
+            $ref: '#/components/schemas/MdDeviceCtrlMelsec'
       title: MdDeviceCtrl 모델
     MdDeviceCtrlMelsec:
       type: object
@@ -5790,18 +5764,13 @@ components:
         dataType:
           type: string
       title: MdDeviceCtrlMelsec 모델
-    ResponseDetailMdDeviceCtrl:
+    ReadAllMdDeviceCtrl:
       type: object
       properties:
-        mdDeviceCtrl:
-          $ref: '#/components/schemas/MdDeviceCtrl'
-          description: 제어컨트롤러 코드
-        mdDeviceCtrlMelses:
-          type: array
-          description: 사양 마스터 리스트
-          items:
-            $ref: '#/components/schemas/MdDeviceCtrlMelsec'
-      title: MdDeviceCtrl 상세 조회 응답 DTO
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
+      title: MdDeviceCtrl 모든 조회 요청 DTO
     APIResponseListMdDeviceCtrl:
       type: object
       properties:
@@ -5822,27 +5791,30 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
-    DeleteMdDeviceCtrl:
+    DetailMdDeviceCtrl:
       type: object
       properties:
-        apiKey:
-          type: string
-          description: apiKey
-          maxLength: 10
-          minLength: 1
-        messageId:
-          type: string
-          description: messageId
-        telegramId:
-          type: string
-          description: telegramId
-        messageNo:
-          type: string
-          description: messageNo
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
         cfgCode:
           type: string
           description: 제어컨트롤러 코드
-          maxLength: 10
+          maxLength: 20
+          minLength: 0
+      required:
+      - cfgCode
+      title: MdDeviceCtrl 상세 조회 요청 DTO
+    DeleteMdDeviceCtrl:
+      type: object
+      properties:
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
+        cfgCode:
+          type: string
+          description: 제어컨트롤러 코드
+          maxLength: 20
           minLength: 0
       required:
       - cfgCode
@@ -5850,173 +5822,28 @@ components:
     CreateMdDeviceCtrl:
       type: object
       properties:
-        apiKey:
-          type: string
-          description: apiKey
-          maxLength: 10
-          minLength: 1
-        messageId:
-          type: string
-          description: messageId
-        telegramId:
-          type: string
-          description: telegramId
-        messageNo:
-          type: string
-          description: messageNo
-        cfgCode:
-          type: string
-          description: 제어컨트롤러 코드
-          maxLength: 10
-          minLength: 0
-        cfgName:
-          type: string
-          description: 제어컨트롤러 명칭
-          maxLength: 200
-          minLength: 0
-        cfgModel:
-          type: string
-          description: "제어컨트롤러 TYPE( (1: BCR, 2: M-PLC, 3: MFC, 4: S-PLC, 5: L-PLC)"
-          enum:
-          - "1"
-          - "2"
-          - "3"
-          - "4"
-          - "5"
-          example: 1
-        ctrlIp:
-          type: string
-          description: 제어컨트롤러 IP
-          maxLength: 20
-          minLength: 0
-        ctrlPort:
-          type: integer
-          format: int32
-          description: 제어 지시 송신 PORT
-          minimum: 0
-        ctrlRscom:
-          type: string
-          description: COM 이름
-          maxLength: 200
-          minLength: 0
-        infType:
-          type: string
-          description: "인터페이스 타입 코드 (0: 기타, 1: SOCKET, 2: SERIAL)"
-          enum:
-          - "0"
-          - "1"
-          - "2"
-          example: 0
-        infModel:
-          type: string
-          description: "인터페이스 모델 코드 (C: Client, S: Server)"
-          enum:
-          - C
-          - S
-          example: C
-        useYn:
-          type: string
-          description: "사용 여부 코드 (Y: 사용, N: 사용안함)"
-          enum:
-          - "Y"
-          - "N"
-          example: "Y"
-        mdDeviceCtrlMelsecs:
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
+        mdDeviceCtrlData:
+          $ref: '#/components/schemas/MdDeviceCtrlData'
+          description: 요청 데이터
+        mdDeviceCtrlMelsecList:
           type: array
           description: 제어기 사양 마스터 리스트
           items:
-            $ref: '#/components/schemas/CreateCtrlMelsec'
-      required:
-      - cfgCode
-      title: MdDeviceCtrl 등록 요청 DTO
-    MdDeviceCtrlMelsecBody:
+            $ref: '#/components/schemas/MdDeviceCtrlMelsecData'
+      title: MdDeviceCtrl 생성 요청 DTO
+    EditMdDeviceCtrlMelsec:
       type: object
       properties:
-        apiKey:
-          type: string
-          description: apiKey
-          maxLength: 10
-          minLength: 1
-        messageId:
-          type: string
-          description: messageId
-        telegramId:
-          type: string
-          description: telegramId
-        messageNo:
-          type: string
-          description: messageNo
-        cfgCode:
-          type: string
-          description: 제어 콘트롤러 코드
-          maxLength: 10
-          minLength: 0
-        memoryType:
-          type: string
-          description: "메모리 타입 (D, M, L, ...)"
-          enum:
-          - X
-          - "Y"
-          - M
-          - L
-          - F
-          - V
-          - B
-          - D
-          - W
-          - R
-          minLength: 1
-        readAddr:
-          type: integer
-          format: int32
-          description: 데이터 읽기 시작 주소
-        readCount:
-          type: integer
-          format: int32
-          description: 데이터 읽기 수량
-        dataType:
-          type: string
-          description: "의사소통 데이터 코드(ASCII: ''1'', BINARY: ''2'')"
-          enum:
-          - "1"
-          - "2"
-      required:
-      - cfgCode
-      - memoryType
-      - readAddr
-      title: MdDeviceCtrlMelsecId DTO
-    APIResponseMdDeviceCtrlMelsecId:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-          title: 결과 상태
-        message:
-          type: string
-          title: 메시지
-        data:
-          $ref: '#/components/schemas/MdDeviceCtrlMelsecId'
-          title: 결과 데이터
-        timestamp:
-          type: string
-          format: date-time
-          title: 요청 응답 타임스탬프
-      title: API 공통응답
-    MdDeviceCtrlMelsecId:
-      type: object
-      properties:
-        cfgCode:
-          type: string
-          description: 제어 콘트롤러 코드
-        memoryType:
-          type: string
-          description: "메모리 타입 (D, M, L, ...)"
-        readAddr:
-          type: integer
-          format: int32
-          description: 데이터 읽기 시작 주소
-      title: RegUnit 복합 Id 모델
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
+        mdDeviceCtrlMelsecData:
+          $ref: '#/components/schemas/MdDeviceCtrlMelsecData'
+          description: 요청 데이터
+      title: RegDevice 수정 요청 DTO
     APIResponseMdDeviceCtrlMelsec:
       type: object
       properties:
@@ -6035,6 +5862,50 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
+    ReadMdDeviceCtrlMelsec:
+      type: object
+      properties:
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
+        cfgCode:
+          type: string
+          description: 제어 콘트롤러 코드
+          maxLength: 20
+          minLength: 0
+        memoryType:
+          type: string
+          description: "메모리 타입 코드 (X, Y, M, L, F, V, B, D, W, R)"
+          enum:
+          - X
+          - "Y"
+          - M
+          - L
+          - F
+          - V
+          - B
+          - D
+          - W
+          - R
+          example: X
+          minLength: 1
+        readAddr:
+          type: integer
+          format: int32
+          description: 데이터 읽기 시작 주소
+          minimum: 0
+      required:
+      - cfgCode
+      - memoryType
+      - readAddr
+      title: MdDeviceCtrlMelsec 조회 DTO
+    ReadAllMdDeviceCtrlMelsec:
+      type: object
+      properties:
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
+      title: MdDeviceCtrlMelsec 모든 목록 요청 DTO
     APIResponseListMdDeviceCtrlMelsec:
       type: object
       properties:
@@ -6055,6 +5926,53 @@ components:
           format: date-time
           title: 요청 응답 타임스탬프
       title: API 공통응답
+    DeleteMdDeviceCtrlMelsec:
+      type: object
+      properties:
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
+        cfgCode:
+          type: string
+          description: 제어 콘트롤러 코드
+          maxLength: 20
+          minLength: 0
+        memoryType:
+          type: string
+          description: "메모리 타입 코드 (X, Y, M, L, F, V, B, D, W, R)"
+          enum:
+          - X
+          - "Y"
+          - M
+          - L
+          - F
+          - V
+          - B
+          - D
+          - W
+          - R
+          example: X
+          minLength: 1
+        readAddr:
+          type: integer
+          format: int32
+          description: 데이터 읽기 시작 주소
+          minimum: 0
+      required:
+      - cfgCode
+      - memoryType
+      - readAddr
+      title: RegDevice 삭제 요청 DTO
+    CreateMdDeviceCtrlMelsec:
+      type: object
+      properties:
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
+        mdDeviceCtrlMelsecData:
+          $ref: '#/components/schemas/MdDeviceCtrlMelsecData'
+          description: 요청 데이터
+      title: MdDeviceCtrlMelsec 생성 DTO
     EditMdDeviceAssist:
       type: object
       properties:
@@ -6065,6 +5983,24 @@ components:
           $ref: '#/components/schemas/MdDeviceAssistData'
           description: 요청 데이터
       title: MdDeviceAssist 수정 DTO
+    APIResponseMdDeviceAssist:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+          title: 결과 상태
+        message:
+          type: string
+          title: 메시지
+        data:
+          $ref: '#/components/schemas/MdDeviceAssist'
+          title: 결과 데이터
+        timestamp:
+          type: string
+          format: date-time
+          title: 요청 응답 타임스탬프
+      title: API 공통응답
     ReadMdDeviceAssist:
       type: object
       properties:
@@ -7400,6 +7336,13 @@ components:
           type: string
           description: 메타 데이터
       title: FcsCanvas 모델
+    ReadAllFcsCanvas:
+      type: object
+      properties:
+        head:
+          $ref: '#/components/schemas/APIRequestBase'
+          description: 요청 공통 헤더
+      title: FcsCanvas 모든 목록 조회 요청 DTO
     APIResponseListFcsCanvas:
       type: object
       properties:
@@ -7582,16 +7525,41 @@ components:
         metaData:
           type: string
           description: 툴 메타 데이터(JSON 문자열)
-        deviceAmount:
-          type: integer
-          format: int32
-          description: 수량
-          minimum: 1
         eqCode:
           type: string
           description: 설비 코드
           maxLength: 20
           minLength: 0
+        deviceAmount:
+          type: integer
+          format: int32
+          description: 장비 수량
+          minimum: 0
+        stgNo:
+          type: string
+          description: 호기
+          maxLength: 10
+          minLength: 0
+        stgLevel:
+          type: integer
+          format: int32
+          description: 단
+          minimum: 0
+        stgBay:
+          type: integer
+          format: int32
+          description: 열
+          minimum: 0
+        stgRow:
+          type: integer
+          format: int32
+          description: 행
+          minimum: 0
+        stgDeep:
+          type: integer
+          format: int32
+          description: 딮
+          minimum: 0
       required:
       - eqCode
       title: FcsCanvasTool 배치 요청 DTO
